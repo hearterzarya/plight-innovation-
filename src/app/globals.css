@@ -1,26 +1,414 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-deep: #05070a;
+  --bg-midnight: #07111f;
+  --bg-graphite: #101820;
+  --accent-cyan: #00e5ff;
+  --accent-blue: #2563eb;
+  --accent-green: #22c55e;
+  --accent-amber: #f59e0b;
+  --text-soft: #f8fafc;
+  --text-cool: #94a3b8;
+  --text-silver: #cbd5e1;
+
+  /* Typography scale */
+  --type-display: clamp(2.125rem, 4vw + 0.5rem, 3.5rem);
+  --type-h2: clamp(1.75rem, 2.2vw + 0.75rem, 2.5rem);
+  --type-h3: clamp(1.25rem, 1.2vw + 0.65rem, 1.5rem);
+  --type-h4: 1.125rem;
+  --type-lead: clamp(1.0625rem, 1.1vw + 0.55rem, 1.25rem);
+  --type-body: 1rem;
+  --type-body-sm: 0.875rem;
+  --type-caption: 0.75rem;
+  --type-label: 0.75rem;
+  --type-accent: clamp(1.125rem, 1.2vw + 0.5rem, 1.375rem);
+  --type-stat: clamp(2rem, 3.5vw + 0.5rem, 2.5rem);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-midnight: var(--bg-midnight);
+  --color-bg-graphite: var(--bg-graphite);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-green: var(--accent-green);
+  --color-accent-amber: var(--accent-amber);
+  --color-text-soft: var(--text-soft);
+  --color-text-cool: var(--text-cool);
+  --color-text-silver: var(--text-silver);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
+  --font-serif: var(--font-instrument);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-soft);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: var(--type-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ─── Typography utilities ─── */
+.font-heading {
+  font-family: var(--font-sora), system-ui, sans-serif;
+}
+
+.font-accent {
+  font-family: var(--font-instrument), Georgia, serif;
+  font-style: italic;
+}
+
+.type-display {
+  font-family: var(--font-sora), system-ui, sans-serif;
+  font-size: var(--type-display);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.type-h2 {
+  font-family: var(--font-sora), system-ui, sans-serif;
+  font-size: var(--type-h2);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.type-h3 {
+  font-family: var(--font-sora), system-ui, sans-serif;
+  font-size: var(--type-h3);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.type-h4 {
+  font-family: var(--font-sora), system-ui, sans-serif;
+  font-size: var(--type-h4);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.type-lead {
+  font-size: var(--type-lead);
+  line-height: 1.65;
+  color: var(--text-cool);
+}
+
+.type-hero-lead {
+  font-size: clamp(1.0625rem, 1.2vw + 0.55rem, 1.3125rem);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.type-body {
+  font-size: var(--type-body);
+  line-height: 1.65;
+}
+
+.type-body-sm {
+  font-size: var(--type-body-sm);
+  line-height: 1.6;
+}
+
+.type-caption {
+  font-size: var(--type-caption);
+  line-height: 1.45;
+}
+
+.type-label {
+  font-size: var(--type-label);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.type-accent-line {
+  font-family: var(--font-instrument), Georgia, serif;
+  font-style: italic;
+  font-size: var(--type-accent);
+  line-height: 1.4;
+}
+
+.type-stat {
+  font-family: var(--font-sora), system-ui, sans-serif;
+  font-size: var(--type-stat);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.type-micro {
+  font-size: 0.625rem;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Global layout system ─── */
+.container-custom {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .section-header {
+    margin-bottom: 4rem;
+  }
+}
+
+.card-base {
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .card-base {
+    padding: 1.75rem;
+  }
+}
+
+.grid-cards {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-cards {
+    gap: 2rem;
+  }
+}
+
+::selection {
+  background: rgba(0, 229, 255, 0.25);
+  color: #f8fafc;
+}
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 24, 32, 0.85) 0%,
+    rgba(7, 17, 31, 0.65) 100%
+  );
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.15),
+    0 0 80px rgba(0, 229, 255, 0.05);
+}
+
+.glow-amber {
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #00e5ff 0%, #2563eb 50%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, #00d9ff 0%, #2563eb 48%, #16a34a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-stat-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.hero-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 217, 255, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 217, 255, 0.12), 0 0 0 1px rgba(0, 217, 255, 0.15);
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero-camera-float {
+  animation: hero-float 5s ease-in-out infinite;
+}
+
+@keyframes hero-chip-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.grid-bg {
+  background-image: linear-gradient(
+      rgba(0, 229, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 48px 48px;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-grid-move {
+  animation: grid-move 20s linear infinite;
+}
+
+/* Government clientele marquee */
+@keyframes clientele-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.clientele-marquee-track {
+  animation: clientele-marquee 36s linear infinite;
+}
+
+.clientele-marquee:hover .clientele-marquee-track {
+  animation-play-state: paused;
+}
+
+.clientele-fade-left {
+  background: linear-gradient(to right, #050a14 0%, transparent 100%);
+}
+
+.clientele-fade-right {
+  background: linear-gradient(to left, #050a14 0%, transparent 100%);
+}
+
+.clientele-logo-card:hover {
+  border-color: rgba(0, 217, 255, 0.28);
+  box-shadow: 0 8px 32px rgba(0, 217, 255, 0.1), 0 0 0 1px rgba(37, 99, 235, 0.15);
+}
+
+.clientele-static-grid {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .clientele-marquee {
+    display: none;
+  }
+
+  .clientele-static-grid {
+    display: grid;
+  }
+
+  .clientele-fade-left,
+  .clientele-fade-right {
+    display: none;
+  }
 }
