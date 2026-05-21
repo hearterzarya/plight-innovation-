@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Building2, Shield, TreePine, Radio, Landmark } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { cn } from "@/lib/utils";
 
@@ -47,42 +48,42 @@ export const clienteleLogos: ClienteleItem[] = [
   },
   {
     id: "forest-dept",
-    name: "Forest Department",
+    name: "Forest Edge Deployment",
     logo: "/images/clientele/forest-department.png",
-    tag: "Forest Safety",
-    initials: "FD",
+    tag: "Field Infrastructure",
+    initials: "FE",
     fallbackIcon: TreePine,
   },
   {
     id: "district-admin",
-    name: "District Administration",
+    name: "Public Safety Technology",
     logo: "/images/clientele/district-administration.png",
     tag: "Public Sector",
-    initials: "DA",
+    initials: "PS",
     fallbackIcon: Building2,
   },
   {
     id: "wildlife-div",
-    name: "Wildlife Safety Deployment",
+    name: "Environmental Monitoring",
     logo: "/images/clientele/wildlife-division.png",
-    tag: "Field Deployment",
-    initials: "WS",
+    tag: "Edge AI",
+    initials: "EM",
     fallbackIcon: Shield,
   },
   {
     id: "public-sector",
-    name: "Public Sector Projects",
+    name: "Rural Safety Infrastructure",
     logo: "/images/clientele/public-sector.png",
-    tag: "Rural Protection",
-    initials: "PS",
+    tag: "IoT Infrastructure",
+    initials: "RS",
     fallbackIcon: Radio,
   },
 ];
 
 const trustStrip = [
-  "Built for forest-fringe areas",
+  "Built for extreme environments",
   "Designed for field deployment",
-  "AI + IoT wildlife safety",
+  "Edge AI + IoT infrastructure",
 ];
 
 export function GovernmentClienteleCarousel() {
@@ -94,9 +95,11 @@ export function GovernmentClienteleCarousel() {
       className="section-padding relative overflow-hidden"
       style={{ backgroundColor: GOV.bg }}
     >
+      <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} className="z-[1]" />
+
       {/* Background effects */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        className="pointer-events-none absolute inset-0 z-[2] opacity-[0.35]"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 217, 255, 0.04) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0, 217, 255, 0.04) 1px, transparent 1px)`,
@@ -120,7 +123,7 @@ export function GovernmentClienteleCarousel() {
         aria-hidden
       />
 
-      <div className="container-custom relative mx-auto">
+      <div className="container-custom relative z-10 mx-auto">
         <AnimateIn className="mx-auto max-w-3xl text-center">
           <span
             className="type-label inline-block rounded-full border px-4 py-1 tracking-[0.2em]"
@@ -139,9 +142,9 @@ export function GovernmentClienteleCarousel() {
             Government Project Experience
           </h2>
           <p className="type-lead mx-auto mt-5 max-w-[720px]" style={{ color: GOV.muted }}>
-            PLIGHT Innovation has worked on technology-led safety deployments with government
-            departments and state-level stakeholders, building practical solutions for wildlife
-            safety, rural protection, and real-world field monitoring.
+            PLIGHT has delivered technology-led edge deployments with government departments and
+            state-level stakeholders—building production-ready embedded AI, telemetry, and field
+            monitoring infrastructure for demanding real-world environments.
           </p>
         </AnimateIn>
 

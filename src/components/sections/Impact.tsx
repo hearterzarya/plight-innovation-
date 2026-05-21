@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   TreePine,
 } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { cn } from "@/lib/utils";
@@ -29,33 +30,33 @@ const IMPACT = {
 } as const;
 
 const stats = [
-  { value: 100, suffix: "+", label: "Villages Covered", icon: MapPin },
-  { value: 4, suffix: "", label: "Forest Dept. Partners", icon: Building2 },
-  { value: 150, suffix: "m", label: "AI Detection Range", icon: Radio },
-  { value: 100, suffix: "%", label: "Field-Tested", icon: Shield },
+  { value: 100, suffix: "+", label: "Active Edge Nodes", icon: MapPin },
+  { value: 0, suffix: "", label: "Autonomous Uptime", icon: Building2, display: "24/7" },
+  { value: 150, suffix: "m", label: "Neural Vision Range", icon: Radio },
+  { value: 100, suffix: "%", label: "Production-Ready", icon: Shield },
 ];
 
 const impactPoints = [
-  "100+ villages protected in Bijnor region",
-  "Jim Corbett National Park field trials",
-  "Uttarakhand & UP Forest Department collaboration",
-  "AI-powered real-time wildlife surveillance",
-  "Faster response for forest-border communities",
+  "100+ active edge nodes deployed in demanding field conditions",
+  "Extreme environment validation across off-grid deployments",
+  "Industrial-grade embedded systems at commercial scale",
+  "On-device neural vision with zero cloud dependency",
+  "Resilient 4G/LTE and GPS telemetry for remote management",
 ];
 
 const trustStrip = [
-  "Built for forest-fringe communities",
-  "Designed for public-sector deployment",
-  "AI + IoT wildlife safety",
-  "Non-lethal deterrence",
+  "Production-ready embedded AI",
+  "Designed for enterprise B2B deployment",
+  "Edge AI + IoT infrastructure",
+  "Field-tested in extreme environments",
 ];
 
 const mapChips = [
   { label: "Uttar Pradesh", position: "bottom-[18%] left-[8%]" },
   { label: "Uttarakhand", position: "top-[12%] right-[10%]" },
-  { label: "Bijnor", position: "bottom-[32%] left-[38%]" },
-  { label: "Jim Corbett Trial", position: "top-[28%] right-[22%]" },
-  { label: "100+ Villages", position: "bottom-[8%] right-[12%]" },
+  { label: "Najibabad HQ", position: "bottom-[32%] left-[38%]" },
+  { label: "Field Validation", position: "top-[28%] right-[22%]" },
+  { label: "100+ Edge Nodes", position: "bottom-[8%] right-[12%]" },
 ];
 
 const villageDots = [
@@ -119,8 +120,9 @@ export function Impact() {
       className="relative overflow-hidden py-[4.5rem] lg:py-[7.5rem]"
       style={{ backgroundColor: IMPACT.bg }}
     >
+      <PcbCircuitBackground corner="both" intensity="subtle" vignette={false} className="z-[1]" />
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 z-[2]"
         style={{
           background:
             "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 55%)",
@@ -136,9 +138,9 @@ export function Impact() {
         aria-hidden
       />
 
-      <div className="container-custom relative mx-auto">
+      <div className="container-custom relative z-10 mx-auto">
         <AnimateIn className="mx-auto max-w-4xl text-center">
-          <SectionLabel className="tracking-[0.14em]">Real Impact</SectionLabel>
+          <SectionLabel className="tracking-[0.14em]">Real-World Execution</SectionLabel>
           <h2
             className="mt-4 font-[family-name:var(--font-sora)] font-extrabold text-white"
             style={{
@@ -147,7 +149,7 @@ export function Impact() {
               letterSpacing: "-0.045em",
             }}
           >
-            Real Impact Across Rural Communities
+            Proven Deployment at Scale
           </h2>
           <p
             className="mx-auto mt-6 max-w-[860px] leading-[1.65]"
@@ -156,8 +158,8 @@ export function Impact() {
               color: IMPACT.muted,
             }}
           >
-            From 100+ village deployments in Bijnor to AI surveillance trials at Jim Corbett
-            and forest department partnerships.
+            From extreme off-grid environments to commercial hardware manufacturing, our edge
+            computing systems are engineered for continuous, uninterrupted performance.
           </p>
         </AnimateIn>
 
@@ -230,7 +232,24 @@ function StatCard({ stat }: { stat: (typeof stats)[number] }) {
       >
         <Icon className="h-6 w-6" style={{ color: IMPACT.cyan }} />
       </div>
-      <Counter value={stat.value} suffix={stat.suffix} />
+      {"display" in stat && stat.display ? (
+        <span
+          className="font-[family-name:var(--font-sora)] font-extrabold"
+          style={{
+            fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
+            lineHeight: 1,
+            letterSpacing: "-0.03em",
+            background: `linear-gradient(135deg, ${IMPACT.cyan} 0%, ${IMPACT.blue} 50%, ${IMPACT.green} 100%)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          {stat.display}
+        </span>
+      ) : (
+        <Counter value={stat.value} suffix={stat.suffix} />
+      )}
       <p className="mt-3 text-sm font-medium leading-snug" style={{ color: IMPACT.muted }}>
         {stat.label}
       </p>
@@ -258,7 +277,7 @@ function DeploymentMapCard() {
               Deployment Coverage
             </p>
             <h3 className="mt-1 font-[family-name:var(--font-sora)] text-lg font-bold text-white sm:text-xl">
-              Bijnor Region Coverage
+              Field Deployment Coverage
             </h3>
           </div>
           <div
@@ -293,7 +312,7 @@ function DeploymentMapCard() {
           className="relative h-full w-full min-h-[240px]"
           viewBox="0 0 400 260"
           preserveAspectRatio="xMidYMid meet"
-          aria-label="Stylized deployment map showing Bijnor, Uttar Pradesh, and Uttarakhand coverage"
+          aria-label="Stylized deployment map showing field coverage across Uttar Pradesh and Uttarakhand"
         >
           {/* Abstract North India outline */}
           <path
@@ -471,11 +490,12 @@ function ImpactHighlightsCard() {
           <div className="flex items-center gap-2">
             <TreePine className="h-4 w-4" style={{ color: IMPACT.green }} />
             <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: IMPACT.cyan }}>
-              Government & Forest Collaboration
+              Field-Tested & Institutional Partners
             </p>
           </div>
           <p className="mt-3 text-sm leading-relaxed" style={{ color: IMPACT.muted }}>
-            Village deployments in partnership with{" "}
+            Production deployments validated in partnership with public-sector stakeholders
+            including{" "}
             <span className="font-medium" style={{ color: IMPACT.text }}>
               CDO Purna Borah
             </span>{" "}
@@ -483,15 +503,7 @@ function ImpactHighlightsCard() {
             <span className="font-medium" style={{ color: IMPACT.text }}>
               DFO Gyan Singh
             </span>
-            . The AI Wildlife Monitoring System is expanding through the{" "}
-            <span className="font-medium" style={{ color: IMPACT.text }}>
-              Uttarakhand Forest Department
-            </span>{" "}
-            and{" "}
-            <span className="font-medium" style={{ color: IMPACT.text }}>
-              Uttar Pradesh Forest Department
-            </span>
-            .
+            —demonstrating edge AI infrastructure at scale in demanding real-world environments.
           </p>
         </div>
       </div>

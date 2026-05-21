@@ -5,7 +5,7 @@ import { Technology } from "@/components/sections/Technology";
 
 export const metadata = pageMetadata(
   "Technology",
-  "AI camera systems, detection workflow, specifications, alerts, solar, battery, and deterrence technology from PLIGHT Innovation."
+  "Neural accelerators, edge AI architecture, embedded systems, resilient telemetry, and production-ready hardware engineering from PLIGHT."
 );
 
 export default function TechnologyPage() {
@@ -13,7 +13,7 @@ export default function TechnologyPage() {
     <PageShell
       label="Technology"
       title="AI, IoT & Deep-Tech Engineering"
-      subtitle="360° surveillance, species recognition, intelligent deterrence, and field-ready electronics built for forest-edge deployment."
+      subtitle="Fusing high-performance neural accelerators, custom microcontrollers, and resilient telemetry for production-ready edge deployments."
     >
       <AIMonitoring />
       <Technology />

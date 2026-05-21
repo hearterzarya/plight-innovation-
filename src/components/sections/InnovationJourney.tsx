@@ -2,13 +2,13 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  AlertTriangle,
-  Zap,
+  Cpu,
   ScanEye,
-  Volume2,
-  MapPin,
-  Camera,
-  TreePine,
+  Zap,
+  Radio,
+  FlaskConical,
+  Gauge,
+  Factory,
   Building2,
   type LucideIcon,
 } from "lucide-react";
@@ -68,72 +68,73 @@ const milestones: {
 }[] = [
   {
     step: "01",
-    title: "Real Problem Identified",
+    title: "Hardware Conception",
     description:
-      "Villages in Bijnor faced increasing wildlife danger near homes and farms.",
-    tag: "Field Problem",
-    icon: AlertTriangle,
+      "Initial engineering of robust microcontroller units designed for remote, unsupervised data collection.",
+    tag: "Prototyping",
+    icon: Cpu,
     accent: "amber",
   },
   {
     step: "02",
-    title: "Fox Light Innovation System",
+    title: "Edge Vision Systems",
     description:
-      "A colored light-based deterrent system was developed to discourage animal entry.",
-    tag: "First Innovation",
-    icon: Zap,
+      "Fusing real-time neural networks with hardware for localized object detection without cloud reliance.",
+    tag: "Integration",
+    icon: ScanEye,
     accent: "cyan",
   },
   {
     step: "03",
-    title: "Field Learning",
+    title: "24/7 Autonomous Nodes",
     description:
-      "Deployment revealed the need for immediate alert warnings when animals approached.",
-    tag: "Field Feedback",
-    icon: ScanEye,
+      "Developing ultra-efficient power architectures for continuous, solar-backed field operations.",
+    tag: "Power Mgmt",
+    icon: Zap,
     accent: "amber",
   },
   {
     step: "04",
-    title: "Wildlife Repellent Device",
+    title: "Resilient Networking",
     description:
-      "Light deterrence was combined with integrated sound alerts for complete protection.",
-    tag: "Product Evolution",
-    icon: Volume2,
+      "Implementing secure cellular and GPS modules to ensure flawless data transmission from off-grid locations.",
+    tag: "Telemetry",
+    icon: Radio,
     accent: "cyan",
   },
   {
     step: "05",
-    title: "100+ Village Deployment",
+    title: "Extreme Environment Testing",
     description:
-      "Deployed across more than 100 villages in Bijnor with government support.",
-    tag: "Real Impact",
-    icon: MapPin,
+      "Rigorous real-world stress testing to validate hardware durability and inference accuracy.",
+    tag: "Field Validation",
+    icon: FlaskConical,
     accent: "green",
   },
   {
     step: "06",
-    title: "AI Wildlife Monitoring System",
+    title: "Latency Reduction",
     description:
-      "Advanced AI with 360° surveillance for real-time species detection and forest fire alerts.",
-    tag: "AI Upgrade",
-    icon: Camera,
+      "Streamlining object detection pipelines to achieve sub-millisecond decision-making at the edge.",
+    tag: "Optimization",
+    icon: Gauge,
     accent: "cyan",
   },
   {
     step: "07",
-    title: "Jim Corbett Field Trials",
-    description: "Successfully tested under real forest conditions at Jim Corbett.",
-    tag: "Field Trial",
-    icon: TreePine,
+    title: "Production Readiness",
+    description:
+      "Transitioning from custom field prototypes to standardized, scalable industrial-grade components.",
+    tag: "Manufacturing",
+    icon: Factory,
     accent: "green",
   },
   {
     step: "08",
-    title: "Forest Department Partnerships",
+    title: "Enterprise Scale",
     description:
-      "Active collaboration with Uttarakhand and Uttar Pradesh forest departments.",
-    tag: "Collaboration",
+      "Delivering end-to-end embedded AI infrastructure for commercial and industrial B2B partners.",
+    tag: "Deployment",
     icon: Building2,
     accent: "green",
   },
@@ -174,7 +175,7 @@ export function InnovationJourney() {
 
       <div className="container-custom relative mx-auto">
         <AnimateIn className="mx-auto max-w-4xl text-center">
-          <SectionLabel className="tracking-[0.14em]">Innovation Journey</SectionLabel>
+          <SectionLabel className="tracking-[0.14em]">Engineering Timeline</SectionLabel>
           <h2
             className="mt-4 font-[family-name:var(--font-sora)] font-extrabold text-white"
             style={{
@@ -183,7 +184,7 @@ export function InnovationJourney() {
               letterSpacing: "-0.045em",
             }}
           >
-            From Village Alerts to AI-Powered Forest Surveillance
+            From Concept to Commercial Scale
           </h2>
           <p
             className="mx-auto mt-6 max-w-[820px] leading-[1.65]"
@@ -192,9 +193,7 @@ export function InnovationJourney() {
               color: JOURNEY.muted,
             }}
           >
-            A real-world innovation journey that started with rural safety challenges and
-            evolved into AI-enabled wildlife monitoring, deterrence, and forest department
-            collaboration.
+            An engineering timeline focused on continuous hardware evolution and embedded AI integration.
           </p>
         </AnimateIn>
 
@@ -271,8 +270,8 @@ export function InnovationJourney() {
               className="font-[family-name:var(--font-sora)] text-base font-semibold sm:text-lg"
               style={{ color: JOURNEY.text }}
             >
-              From a local rural challenge to{" "}
-              <span style={{ color: JOURNEY.cyan }}>field-tested AI wildlife protection</span>
+              From custom hardware engineering to{" "}
+              <span style={{ color: JOURNEY.cyan }}>global edge AI infrastructure</span>
             </p>
           </div>
         </AnimateIn>

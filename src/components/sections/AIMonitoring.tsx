@@ -6,19 +6,21 @@ import { motion } from "framer-motion";
 import {
   Brain,
   Camera,
-  PawPrint,
-  Flame,
   MapPin,
   Smartphone,
   Zap,
   Shield,
-  Target,
   Bell,
   Video,
   ScanEye,
   Radio,
+  Gauge,
+  Thermometer,
+  AlertTriangle,
+  Target,
   type LucideIcon,
 } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { cn } from "@/lib/utils";
@@ -45,7 +47,7 @@ const WILDLIFE_IMAGES = {
 } as const;
 
 /* ─── Radar animal detection cards ─── */
-const radarAnimals: {
+const radarDetections: {
   id: string;
   name: string;
   confidence: string;
@@ -55,91 +57,82 @@ const radarAnimals: {
   iconBg: string;
   position: string;
   floatDelay: number;
-  image?: string;
 }[] = [
   {
-    id: "elephant",
-    name: "Elephant",
+    id: "object-a",
+    name: "Object Class A",
     confidence: "94%",
     status: "Monitoring",
-    icon: PawPrint,
+    icon: ScanEye,
     dotColor: AI.amber,
     iconBg: "rgba(245, 158, 11, 0.15)",
     position: "bottom-[14%] left-[2%] sm:left-[4%]",
     floatDelay: 0,
-    image: WILDLIFE_IMAGES.elephant,
   },
   {
-    id: "tiger",
-    name: "Tiger",
+    id: "object-b",
+    name: "Object Class B",
     confidence: "91%",
-    status: "Detection Ready",
+    status: "Inference Ready",
     icon: Target,
     dotColor: AI.amber,
     iconBg: "rgba(249, 115, 22, 0.15)",
     position: "top-[10%] left-[2%] sm:left-[6%]",
     floatDelay: 0.6,
-    image: WILDLIFE_IMAGES.tiger,
   },
   {
-    id: "leopard",
-    name: "Leopard",
+    id: "anomaly",
+    name: "Anomaly Flag",
     confidence: "89%",
     status: "Active",
-    icon: ScanEye,
+    icon: AlertTriangle,
     dotColor: AI.cyan,
     iconBg: "rgba(0, 217, 255, 0.12)",
     position: "top-[12%] right-[2%] sm:right-[4%]",
     floatDelay: 1.2,
-    image: WILDLIFE_IMAGES.leopard,
   },
 ];
 
 /* ─── Right column species feature pills ─── */
-const speciesFeatures: {
+const architectureFeatures: {
   id: string;
   title: string;
   micro: string;
   icon: LucideIcon;
   accent: string;
   iconColor: string;
-  image?: string;
 }[] = [
   {
-    id: "elephants",
-    title: "Elephants",
-    micro: "Large movement detection",
-    icon: PawPrint,
-    accent: "rgba(245, 158, 11, 0.12)",
-    iconColor: AI.amber,
-    image: WILDLIFE_IMAGES.elephant,
-  },
-  {
-    id: "tigers",
-    title: "Tigers",
-    micro: "Predator activity monitoring",
-    icon: Target,
-    accent: "rgba(249, 115, 22, 0.12)",
-    iconColor: "#FB923C",
-    image: WILDLIFE_IMAGES.tiger,
-  },
-  {
-    id: "leopards",
-    title: "Leopards",
-    micro: "Village-edge alerting",
+    id: "object-detection",
+    title: "Dynamic Object Detection",
+    micro: "Custom AI pipeline execution",
     icon: ScanEye,
     accent: "rgba(0, 217, 255, 0.1)",
     iconColor: AI.cyan,
-    image: WILDLIFE_IMAGES.leopard,
   },
   {
-    id: "forest-fire",
-    title: "Forest Fire",
-    micro: "Early visual risk signals",
-    icon: Flame,
+    id: "inference",
+    title: "High-Speed Inference",
+    micro: "Sub-millisecond local processing",
+    icon: Gauge,
+    accent: "rgba(245, 158, 11, 0.12)",
+    iconColor: AI.amber,
+  },
+  {
+    id: "environmental",
+    title: "Environmental Analysis",
+    micro: "Multi-variable field monitoring",
+    icon: Thermometer,
+    accent: "rgba(22, 163, 74, 0.12)",
+    iconColor: AI.green,
+  },
+  {
+    id: "anomaly",
+    title: "Anomaly Detection",
+    micro: "Early visual threat identification",
+    icon: AlertTriangle,
     accent: "rgba(249, 115, 22, 0.14)",
     iconColor: AI.fire,
-    image: WILDLIFE_IMAGES.forestFire,
   },
 ];
 
@@ -176,43 +169,43 @@ const floatingChips: {
 ];
 
 const alertData = [
-  { label: "Animal Type / Category", example: "Leopard Detected" },
-  { label: "Detection Time & Date", example: "Real-time timestamp" },
-  { label: "Confidence Level", example: "94.2% accuracy" },
-  { label: "Alert Notification", example: "Instant mobile push" },
-  { label: "Location Information", example: "GPS coordinates" },
+  { label: "Detection Class", example: "Custom AI Models" },
+  { label: "Inference Latency", example: "Sub-millisecond Execution" },
+  { label: "Confidence Level", example: ">94.2% Edge Accuracy" },
+  { label: "Data Sync Status", example: "Secure Payload Transmitted" },
+  { label: "Location Info", example: "GPS / GNSS Coordinates" },
 ];
 
 const capabilities = [
   {
     icon: Camera,
-    title: "360° Smart Surveillance",
-    desc: "Continuous monitoring across 100–150 meter range in all directions.",
+    title: "Zero-Latency Processing",
+    desc: "Continuous local monitoring and on-device inference without cloud reliance.",
   },
   {
     icon: Brain,
-    title: "AI Species Recognition",
-    desc: "Object detection trained for high-risk wildlife and fire incidents.",
+    title: "Hardware-Accelerated AI",
+    desc: "Optimized neural networks running on dedicated embedded computing modules.",
   },
   {
     icon: Zap,
-    title: "Integrated Deterrent System",
-    desc: "Smart warning lights and sound alerts from the Wildlife Repellent Device.",
+    title: "Autonomous Execution",
+    desc: "Instant triggering of programmable hardware responses based on AI detection.",
   },
   {
     icon: Video,
-    title: "20-Second Video Evidence",
-    desc: "Auto-recorded clips sent instantly to authorized mobile devices.",
+    title: "Local Data Retention",
+    desc: "Secure on-device storage of critical event logs for periodic synchronization.",
   },
   {
     icon: Smartphone,
-    title: "Real-Time Mobile Alerts",
-    desc: "Notifications to monitoring teams and senior forest authorities.",
+    title: "Resilient Telemetry",
+    desc: "4G/LTE and IoT integration for real-time node management and status alerts.",
   },
   {
     icon: Shield,
-    title: "Proactive Protection",
-    desc: "Identify threats before incidents — not just react after danger arrives.",
+    title: "Proactive Analytics",
+    desc: "Identifying environmental or industrial anomalies before critical failures occur.",
   },
 ];
 
@@ -222,20 +215,22 @@ export function AIMonitoring() {
       <div className="absolute inset-0 bg-gradient-to-b from-bg-deep via-bg-midnight/60 to-bg-deep" />
       <div className="absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-blue-600/8 blur-[120px]" />
       <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-400/5 blur-[100px]" />
+      <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} className="z-[1]" />
 
-      <div className="container-custom relative mx-auto">
+      <div className="container-custom relative z-10 mx-auto">
         <AnimateIn className="text-center max-w-4xl mx-auto">
-          <SectionLabel>Next-Generation Innovation</SectionLabel>
+          <SectionLabel>Next-Generation Vision</SectionLabel>
           <h2 className="type-h2 mt-4 text-white">
-            AI Wildlife Monitoring System
+            Advanced Edge AI Architecture
           </h2>
           <p className="type-accent-line mt-3 text-cyan-400/90">
-            From village alerts to intelligent forest surveillance
+            Deploying complex neural networks directly on field-ready hardware
           </p>
           <p className="type-lead mx-auto mt-5 max-w-[720px]">
-            After deploying wildlife safety devices across 100+ villages in Bijnor, PLIGHT
-            Innovation advanced into Artificial Intelligence-powered real-time monitoring —
-            identifying dangerous wildlife and forest fire threats before incidents occur.
+            PLIGHT integrates advanced Neural Processing Units (NPUs) and custom object detection
+            pipelines directly onto ruggedized edge nodes. Unlike cloud-dependent systems, our
+            architecture processes high-resolution data locally—achieving zero-latency inference
+            and immediate autonomous execution in extreme, off-grid environments.
           </p>
         </AnimateIn>
 
@@ -261,10 +256,10 @@ export function AIMonitoring() {
         {/* Alert data payload */}
         <AnimateIn delay={0.15} className="mt-20">
           <h3 className="type-h3 text-center text-white">
-            Real-Time Intelligence Delivered
+            Real-Time Edge Telemetry
           </h3>
           <p className="type-body-sm mx-auto mt-3 max-w-[720px] text-center text-text-cool">
-            Every detection triggers instant mobile alerts with critical field data
+            Instantaneous data parsing and secure payload transmission
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {alertData.map((item) => (
@@ -296,13 +291,13 @@ export function AIMonitoring() {
 
         <AnimateIn delay={0.2} className="mt-20">
           <p className="type-accent-line text-center text-text-cool">
-            Building a smarter ecosystem for wildlife protection, rural safety, and
-            AI-powered environmental monitoring across India.{" "}
+            From neural vision to resilient telemetry, PLIGHT turns advanced edge AI concepts
+            into deployable industrial hardware.{" "}
             <a
-              href="/field-trials"
+              href="/impact"
               className="text-cyan-400 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
             >
-              View field trial results
+              Explore production deployments
             </a>
           </p>
         </AnimateIn>
@@ -316,18 +311,18 @@ function SpeciesFeaturePanel() {
   return (
     <div className="flex flex-col gap-6">
       <p className="leading-relaxed" style={{ color: AI.muted }}>
-        The system combines advanced AI with a 360-degree smart surveillance camera,
-        continuously monitoring surrounding areas within approximately{" "}
+        The edge node combines advanced AI with a 360-degree vision module, continuously
+        monitoring surrounding areas within approximately{" "}
         <span className="font-semibold" style={{ color: AI.text }}>
           100 to 150 meters
         </span>
-        . Unlike traditional systems, it detects, responds, and alerts — integrating all
-        major features of the Wildlife Repellent Device.
+        . On-device inference triggers programmable hardware logic and secure telemetry
+        synchronization—without cloud dependency.
       </p>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {speciesFeatures.map((species) => (
-          <SpeciesPillCard key={species.id} species={species} />
+        {architectureFeatures.map((feature) => (
+          <ArchitecturePillCard key={feature.id} feature={feature} />
         ))}
       </div>
 
@@ -336,11 +331,12 @@ function SpeciesFeaturePanel() {
   );
 }
 
-function SpeciesPillCard({
-  species,
+function ArchitecturePillCard({
+  feature,
 }: {
-  species: (typeof speciesFeatures)[number];
+  feature: (typeof architectureFeatures)[number];
 }) {
+  const Icon = feature.icon;
   return (
     <motion.div
       whileHover={{ y: -3 }}
@@ -351,51 +347,27 @@ function SpeciesPillCard({
         borderColor: AI.border,
       }}
     >
-      <SpeciesIconBox species={species} />
+      <div
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border transition-all group-hover:scale-105"
+        style={{
+          background: feature.accent,
+          borderColor: AI.border,
+        }}
+      >
+        <Icon className="h-5 w-5" style={{ color: feature.iconColor }} />
+      </div>
       <div className="min-w-0 flex-1">
         <p
           className="font-[family-name:var(--font-sora)] text-sm font-semibold"
           style={{ color: AI.text }}
         >
-          {species.title}
+          {feature.title}
         </p>
         <p className="mt-0.5 text-xs leading-snug" style={{ color: AI.muted }}>
-          {species.micro}
+          {feature.micro}
         </p>
       </div>
     </motion.div>
-  );
-}
-
-function SpeciesIconBox({
-  species,
-}: {
-  species: (typeof speciesFeatures)[number];
-}) {
-  const Icon = species.icon;
-  const [useImage, setUseImage] = useState(true);
-
-  return (
-    <div
-      className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border transition-all group-hover:scale-105"
-      style={{
-        background: species.accent,
-        borderColor: AI.border,
-      }}
-    >
-      {species.image && useImage ? (
-        <Image
-          src={species.image}
-          alt=""
-          width={44}
-          height={44}
-          className="h-full w-full object-cover"
-          onError={() => setUseImage(false)}
-        />
-      ) : (
-        <Icon className="h-5 w-5" style={{ color: species.iconColor }} />
-      )}
-    </div>
   );
 }
 
@@ -425,15 +397,14 @@ function IntelligentResponseCard() {
             className="text-xs font-bold uppercase tracking-[0.15em]"
             style={{ color: AI.cyan }}
           >
-            Intelligent Response
+            Autonomous Logic Control
           </p>
           <p className="mt-3 text-sm leading-relaxed" style={{ color: AI.muted }}>
-            On detection, the system activates deterrent lights and sound alerts, records a
-            20-second video clip, and sends it with full metadata to authorized forest
-            authorities and monitoring teams.
+            On successful inference, the edge node instantly triggers programmable hardware logic
+            for mechanical or digital responses, synchronizing critical metadata via secure telemetry.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
-            {["Lights + Sound", "20s Video", "Mobile Alert"].map((tag) => (
+            {["Logic Triggers", "Data Sync", "Hardware Automation"].map((tag) => (
               <span
                 key={tag}
                 className="rounded-full border px-2.5 py-0.5 text-[10px] font-medium"
@@ -549,8 +520,8 @@ function DetectionRadarVisual() {
       </div>
 
       {/* Animal detection cards */}
-      {radarAnimals.map((animal) => (
-        <RadarAnimalCard key={animal.id} animal={animal} />
+      {radarDetections.map((detection) => (
+        <RadarDetectionCard key={detection.id} detection={detection} />
       ))}
 
       {/* Floating status chips */}
@@ -577,15 +548,14 @@ function DetectionRadarVisual() {
   );
 }
 
-function RadarAnimalCard({ animal }: { animal: (typeof radarAnimals)[number] }) {
-  const Icon = animal.icon;
-  const [imgOk, setImgOk] = useState(true);
+function RadarDetectionCard({ detection }: { detection: (typeof radarDetections)[number] }) {
+  const Icon = detection.icon;
 
   return (
     <motion.div
       className={cn(
         "absolute z-20 w-[128px] rounded-xl border backdrop-blur-md sm:w-[140px]",
-        animal.position
+        detection.position
       )}
       style={{
         background: AI.card,
@@ -593,7 +563,7 @@ function RadarAnimalCard({ animal }: { animal: (typeof radarAnimals)[number] }) 
         boxShadow: "0 8px 24px rgba(0, 0, 0, 0.35)",
       }}
       animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 3.5, repeat: Infinity, delay: animal.floatDelay, ease: "easeInOut" }}
+      transition={{ duration: 3.5, repeat: Infinity, delay: detection.floatDelay, ease: "easeInOut" }}
       whileHover={{
         y: -6,
         boxShadow: `0 12px 36px rgba(0, 217, 255, 0.12), 0 0 0 1px rgba(0, 217, 255, 0.2)`,
@@ -603,40 +573,29 @@ function RadarAnimalCard({ animal }: { animal: (typeof radarAnimals)[number] }) 
         <div className="flex items-start gap-2.5">
           <div
             className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border"
-            style={{ background: animal.iconBg, borderColor: AI.border }}
+            style={{ background: detection.iconBg, borderColor: AI.border }}
           >
-            {animal.image && imgOk ? (
-              <Image
-                src={animal.image}
-                alt={animal.name}
-                width={40}
-                height={40}
-                className="h-full w-full object-cover"
-                onError={() => setImgOk(false)}
-              />
-            ) : (
-              <Icon className="h-5 w-5" style={{ color: animal.dotColor }} />
-            )}
+            <Icon className="h-5 w-5" style={{ color: detection.dotColor }} />
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold" style={{ color: AI.text }}>
-              {animal.name}
+              {detection.name}
             </p>
             <p
               className="font-[family-name:var(--font-sora)] text-sm font-bold tabular-nums"
               style={{ color: AI.cyan }}
             >
-              {animal.confidence}
+              {detection.confidence}
             </p>
           </div>
         </div>
         <div className="mt-2 flex items-center gap-1.5">
           <span
             className="h-1.5 w-1.5 shrink-0 rounded-full animate-pulse"
-            style={{ background: animal.dotColor }}
+            style={{ background: detection.dotColor }}
           />
           <span className="text-[10px] font-medium" style={{ color: AI.muted }}>
-            {animal.status}
+            {detection.status}
           </span>
         </div>
       </div>

@@ -2,16 +2,16 @@
 
 import { motion } from "framer-motion";
 import {
-  Zap,
-  Volume2,
-  Radio,
-  Home,
-  Wrench,
-  Heart,
+  Cpu,
   Shield,
+  Sun,
+  Radio,
   Box,
-  Users,
+  Zap,
+  Wrench,
+  Volume2,
 } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { cn } from "@/lib/utils";
@@ -30,21 +30,21 @@ const SOL = {
 } as const;
 
 const callouts = [
-  { icon: Zap, label: "Multi-color flashing lights", anchor: { x: 50, y: 10 } },
-  { icon: Radio, label: "Automatic activation", anchor: { x: 12, y: 26 } },
-  { icon: Volume2, label: "Sound alert system", anchor: { x: 88, y: 26 } },
-  { icon: Heart, label: "Wildlife-safe deterrence", anchor: { x: 50, y: 90 } },
+  { icon: Cpu, label: "On-Device Neural Processing", anchor: { x: 50, y: 10 } },
+  { icon: Shield, label: "Ruggedized Industrial Enclosure", anchor: { x: 12, y: 26 } },
+  { icon: Sun, label: "24/7 Solar Power Architecture", anchor: { x: 88, y: 26 } },
+  { icon: Radio, label: "Secure Telemetry (4G/LTE & GPS)", anchor: { x: 50, y: 90 } },
   { icon: Wrench, label: "Field-tested durability", anchor: { x: 12, y: 74 } },
-  { icon: Home, label: "Rural deployment ready", anchor: { x: 88, y: 74 } },
+  { icon: Zap, label: "Quick deployment ready", anchor: { x: 88, y: 74 } },
 ] as const;
 
 const bottomFeatures = [
-  { icon: Zap, title: "High-intensity warning lights", desc: "Visible multi-spectrum alerts for night-time deterrence" },
-  { icon: Volume2, title: "Integrated sound alerts", desc: "Loud, directional audio to warn communities instantly" },
-  { icon: Radio, title: "Automatic detection response", desc: "Activates when wildlife movement is sensed nearby" },
-  { icon: Shield, title: "Non-lethal deterrence", desc: "Protects people without harming animals" },
-  { icon: Box, title: "Field-ready enclosure", desc: "Rugged housing built for rural and forest-edge conditions" },
-  { icon: Users, title: "Community alert support", desc: "Helps villages respond before danger escalates" },
+  { icon: Cpu, title: "High-Efficiency Microcontrollers", desc: "Engineered for continuous, unsupervised operation with minimal power draw in remote locations." },
+  { icon: Zap, title: "Zero-Latency Vision AI", desc: "On-device AI inference for real-time object detection without relying on cloud infrastructure." },
+  { icon: Radio, title: "Resilient Telemetry", desc: "Seamless data synchronization using integrated cellular modems and secure network protocols." },
+  { icon: Sun, title: "Off-Grid Independence", desc: "Independent energy management systems built specifically for 24/7 continuous deployment." },
+  { icon: Box, title: "Production-Ready Build", desc: "Weatherproof and ruggedized hardware designed to withstand harsh physical and environmental wear." },
+  { icon: Wrench, title: "Custom Logic Control", desc: "Programmable automation tailored for complex industrial, environmental, and commercial operations." },
 ];
 
 export function Solution() {
@@ -54,8 +54,9 @@ export function Solution() {
       className="relative overflow-hidden py-[4.5rem] lg:py-[7.5rem]"
       style={{ backgroundColor: SOL.bg }}
     >
+      <PcbCircuitBackground corner="right" intensity="subtle" vignette={false} className="z-[1]" />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-bg-midnight/40 to-transparent"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-transparent via-bg-midnight/40 to-transparent"
         aria-hidden
       />
       <div
@@ -75,9 +76,9 @@ export function Solution() {
         />
       </svg>
 
-      <div className="container-custom relative mx-auto">
+      <div className="container-custom relative z-10 mx-auto">
         <AnimateIn className="mx-auto max-w-4xl text-center">
-          <SectionLabel className="tracking-[0.14em]">Our Solution</SectionLabel>
+          <SectionLabel className="tracking-[0.14em]">Flagship Architecture</SectionLabel>
           <h2
             className="mt-4 font-[family-name:var(--font-sora)] font-extrabold text-white"
             style={{
@@ -86,7 +87,7 @@ export function Solution() {
               letterSpacing: "-0.045em",
             }}
           >
-            Intelligent Wildlife Repellent Device
+            Autonomous Edge AI Node
           </h2>
           <p
             className="mx-auto mt-6 max-w-[760px] leading-[1.65]"
@@ -95,8 +96,8 @@ export function Solution() {
               color: SOL.muted,
             }}
           >
-            An advanced smart deterrent system that automatically activates powerful
-            flashing lights and sound alerts when wild animals approach populated areas.
+            A fully integrated, solar-powered computing unit designed to run high-performance
+            neural accelerators and custom object detection pipelines in extreme off-grid environments.
           </p>
         </AnimateIn>
 
@@ -137,6 +138,7 @@ function ProductShowcase() {
       />
 
       {/* Desktop / tablet: radial showcase */}
+      {/* TODO: Replace with rugged Edge AI Node render. */}
       <div className="relative mx-auto hidden min-h-[480px] md:block lg:min-h-[500px]">
         <ConnectorLines />
         {callouts.map((c, i) => (
@@ -145,7 +147,7 @@ function ProductShowcase() {
         <DeviceUnit className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
       </div>
 
-      {/* Mobile: device then callout grid */}
+      {/* Mobile: device then callout grid — TODO: Replace with rugged Edge AI Node render. */}
       <div className="flex flex-col items-center gap-8 md:hidden">
         <div className="relative flex min-h-[320px] w-full items-center justify-center py-6">
           <DeviceUnit />
@@ -334,7 +336,7 @@ function DeviceUnit({ className }: { className?: string }) {
           PLIGHT
         </p>
         <p className="mt-0.5 text-center font-[family-name:var(--font-sora)] text-sm font-bold leading-tight text-white sm:text-base">
-          Wildlife Repellent
+          Edge AI Node
         </p>
 
         {/* Speaker + sound waves */}

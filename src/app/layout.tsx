@@ -27,14 +27,14 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   ...siteMetadata,
   keywords: [
-    "AI wildlife monitoring system",
-    "wildlife repellent device",
-    "human-animal conflict solution",
-    "smart rural protection system",
-    "AI wildlife safety technology",
-    "forest fire detection AI",
-    "Jim Corbett wildlife technology",
-    "wildlife safety device India",
+    "edge AI hardware",
+    "embedded AI systems",
+    "IoT telemetry nodes",
+    "neural vision edge computing",
+    "industrial edge AI",
+    "production-ready AI hardware",
+    "autonomous edge computing",
+    "4G LTE GPS telemetry",
   ],
   icons: {
     icon: "/logo.png",

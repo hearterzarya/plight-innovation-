@@ -1,10 +1,8 @@
 export const mainNav = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/solutions", label: "Solutions" },
-  { href: "/technology", label: "Technology" },
-  { href: "/impact", label: "Impact" },
-  { href: "/field-trials", label: "Field Trials" },
+  { href: "/solutions", label: "Edge AI Solutions" },
+  { href: "/technology", label: "Hardware & Prototyping" },
+  { href: "/impact", label: "Production Deployments" },
   { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" },
 ] as const;

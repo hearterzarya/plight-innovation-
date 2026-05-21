@@ -4,14 +4,14 @@ import { Logo } from "@/components/layout/Logo";
 
 const footerLinks = {
   Solutions: [
-    { label: "Our Solutions", href: "/solutions" },
-    { label: "Technology", href: "/technology" },
-    { label: "Field Trials", href: "/field-trials" },
+    { label: "Edge AI Solutions", href: "/solutions" },
+    { label: "Hardware & Prototyping", href: "/technology" },
+    { label: "Production Deployments", href: "/impact" },
     { label: "Resources", href: "/resources" },
   ],
   Company: [
     { label: "About", href: "/about" },
-    { label: "Impact", href: "/impact" },
+    { label: "Field Validation", href: "/field-trials" },
     { label: "Contact", href: "/contact" },
   ],
 };
@@ -29,7 +29,7 @@ export function Footer() {
               <Logo />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-text-cool">
-              Wildlife Safety Technology · AI + Electronics + IoT
+              Engineering the future of autonomous edge computing and embedded AI infrastructure.
             </p>
             <div className="mt-4 flex items-start gap-2 text-sm text-text-cool">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" aria-hidden />
@@ -87,9 +87,11 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 sm:flex-row">
           <p className="text-xs text-text-cool">
-            © {new Date().getFullYear()} PLIGHT INNOVATION PRIVATE LIMITED. All rights reserved.
+            © 2026 Plight Innovation Pvt. Ltd. All rights reserved.
           </p>
-          <p className="text-xs text-text-cool">Built with purpose in Bijnor, Uttar Pradesh</p>
+          <p className="text-xs text-text-cool">
+            From neural vision to resilient telemetry — deployable industrial hardware
+          </p>
         </div>
       </div>
     </footer>

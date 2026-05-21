@@ -1,92 +1,95 @@
 ﻿"use client";
 
 import {
-  Shield,
+  ScanEye,
   Radio,
-  Brain,
-  Lightbulb,
-  Volume2,
-  Wrench,
-  Camera,
+  Network,
+  Gauge,
+  Timer,
+  Cpu,
+  Factory,
 } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
 const products = [
   {
-    icon: Camera,
-    title: "AI Wildlife Monitoring System",
+    icon: ScanEye,
+    title: "Edge AI Vision Systems",
     description:
-      "360° AI surveillance with species recognition, 20-second video alerts, and integrated deterrent response. Field-tested at Jim Corbett National Park.",
-    useCase: "Forest-border surveillance & national parks",
-    tech: "AI object detection, 360° camera, mobile alerts",
-    area: "Jim Corbett, Uttarakhand & UP",
+      "Integrating high-performance neural accelerators and custom object detection pipelines for real-time, zero-latency analysis.",
+    useCase: "Industrial & Environmental Monitoring",
+    tech: "Neural Accelerators, Custom AI Pipelines",
+    area: "Commercial Scale",
     featured: true,
-    badge: "Latest Innovation",
-  },
-  {
-    icon: Shield,
-    title: "Wildlife Repellent Device",
-    description:
-      "Flagship smart deterrent with flashing lights and sound alerts — deployed across 100+ villages in Bijnor.",
-    useCase: "Village perimeter & residential safety",
-    tech: "Embedded systems, multi-sensor activation",
-    area: "Bijnor, Uttar Pradesh",
-    featured: false,
-    badge: "100+ Villages",
+    badge: "Flagship",
   },
   {
     icon: Radio,
-    title: "Smart Rural Protection System",
-    description: "Networked safety infrastructure for coordinated village-wide protection.",
-    useCase: "Multi-village deployment",
-    tech: "IoT, wireless mesh",
-    area: "Rural UP",
+    title: "Autonomous Telemetry Nodes",
+    description:
+      "Solar-powered edge nodes with robust microcontrollers and secure 4G/LTE connectivity for off-grid execution.",
+    useCase: "Remote Data Acquisition",
+    tech: "Cellular (4G/LTE), LoRa, Custom PCBs",
+    area: "Off-Grid Environments",
+    featured: false,
+    badge: "Field-Tested",
   },
   {
-    icon: Brain,
-    title: "AI-Based Wildlife Alert System",
-    description: "Intelligent detection and automated alert distribution to residents.",
-    useCase: "High-risk wildlife corridors",
-    tech: "AI, edge computing",
-    area: "Forest-adjacent villages",
+    icon: Network,
+    title: "Decentralized IoT Networks",
+    description: "Multi-node synchronization across large-scale telemetry infrastructure.",
+    useCase: "Multi-Node Synchronization",
+    tech: "Wireless Mesh, Edge Computing",
+    area: "Large-Scale Infrastructure",
   },
   {
-    icon: Lightbulb,
-    title: "Intelligent Light Deterrent System",
-    description: "Fox Light evolution — multi-color high-intensity deterrent lighting.",
-    useCase: "Perimeter deterrence",
-    tech: "Electronics, optics",
-    area: "Agricultural zones",
+    icon: Gauge,
+    title: "Real-Time Inference Engines",
+    description: "Zero-latency on-device decision making for mission-critical operations.",
+    useCase: "Zero-Latency Decision Making",
+    tech: "Deep Learning, Microcontrollers",
+    area: "Mission-Critical Operations",
   },
   {
-    icon: Volume2,
-    title: "Sound Alert Warning Device",
-    description: "Integrated audio warning system for immediate community notification.",
-    useCase: "Night-time alert coverage",
-    tech: "Audio engineering, automation",
-    area: "Residential clusters",
+    icon: Timer,
+    title: "Commercial Automation Devices",
+    description:
+      "Programmable WiFi logic, digital timers, and mass-market electronics for consumer and B2B retail.",
+    useCase: "Mass Market Electronics",
+    tech: "Programmable WiFi Logic & Digital Timers",
+    area: "Consumer & B2B Retail",
   },
   {
-    icon: Wrench,
-    title: "Custom Electronics & IoT Solutions",
-    description: "Bespoke hardware development for government, NGO, and CSR partners.",
-    useCase: "Specialized deployments",
-    tech: "Full-stack hardware dev",
-    area: "Pan-India",
+    icon: Cpu,
+    title: "Custom Hardware Integration",
+    description: "Embedded systems engineering for specialized sensor deployment and enterprise projects.",
+    useCase: "Specialized Sensor Deployment",
+    tech: "Embedded Systems Engineering",
+    area: "Enterprise Custom Projects",
+  },
+  {
+    icon: Factory,
+    title: "Production & Manufacturing",
+    description: "Full-stack hardware development from prototype to commercial scale for global B2B partners.",
+    useCase: "Prototype to Commercial Scale",
+    tech: "Full-Stack Hardware Development",
+    area: "Global B2B Partners",
   },
 ];
 
 export function Products() {
   return (
-    <section className="section-padding relative">
-      <div className="container-custom mx-auto">
+    <section className="section-padding relative overflow-hidden">
+      <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} />
+      <div className="container-custom relative z-10 mx-auto">
         <AnimateIn>
-          <SectionLabel>Solutions</SectionLabel>
+          <SectionLabel>Deployments</SectionLabel>
           <SectionHeading
-            title="Smart Protection Systems for Safer Communities"
-            subtitle="From village deterrent devices to AI-powered forest surveillance."
+            title="Scalable Edge Infrastructure for the Physical World"
+            subtitle="From custom programmable automation to advanced neural surveillance and remote data acquisition."
             align="center"
           />
         </AnimateIn>
@@ -119,9 +122,7 @@ export function Products() {
                       : "text-text-cool group-hover:text-cyan-400"
                   } transition-colors`}
                 />
-                <h3 className="type-h4 text-white">
-                  {product.title}
-                </h3>
+                <h3 className="type-h4 text-white">{product.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-cool">
                   {product.description}
                 </p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { cn } from "@/lib/utils";
@@ -19,22 +20,22 @@ const MAP = {
 } as const;
 
 const floatingChips = [
-  { label: "Forest Edge", position: "top-[6%] left-[4%] sm:left-[6%]", color: MAP.green, delay: 0 },
-  { label: "Village Zone", position: "top-[6%] right-[4%] sm:right-[6%]", color: MAP.cyan, delay: 0.2 },
+  { label: "Edge Node", position: "top-[6%] left-[4%] sm:left-[6%]", color: MAP.green, delay: 0 },
+  { label: "Neural Vision", position: "top-[6%] right-[4%] sm:right-[6%]", color: MAP.cyan, delay: 0.2 },
   {
-    label: "Wildlife Movement",
+    label: "On-Device AI",
     position: "top-[38%] left-[2%] sm:left-[4%]",
     color: MAP.amber,
     delay: 0.4,
   },
   {
-    label: "Alert Triggered",
+    label: "Telemetry Sync",
     position: "bottom-[38%] left-[28%] sm:left-[32%]",
     color: MAP.amber,
     delay: 0.6,
   },
   {
-    label: "Community Protected",
+    label: "24/7 Autonomous",
     position: "bottom-[10%] right-[4%] sm:right-[8%]",
     color: MAP.green,
     delay: 0.8,
@@ -57,32 +58,30 @@ export function Mission() {
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-deep via-bg-midnight/50 to-bg-deep"
         aria-hidden
       />
-      <div className="container-custom relative mx-auto">
+      <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} className="z-[1]" />
+      <div className="container-custom relative z-10 mx-auto">
         <div className="grid min-w-0 items-center gap-10 md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
           <AnimateIn className="min-w-0">
             <div className="flex flex-col justify-center lg:pr-4 xl:pr-8">
               <SectionLabel>Our Origin</SectionLabel>
               <h2 className="type-h2 mt-4 text-white">
-                Technology Built to Protect Human Lives
+                Technology Built for the Physical World
               </h2>
               <p className="type-accent-line mt-3 text-cyan-400/90">
-                Born from real fear in rural Najibabad
+                Born from complex field challenges in Najibabad, India
               </p>
               <div className="type-body mt-6 max-w-[620px] space-y-4 text-text-cool">
                 <p>
-                  PLIGHT Innovation was founded by Robin and Saqib ? two friends from
-                  Najibabad, Bijnor, Uttar Pradesh ? after witnessing the growing crisis
-                  of human-animal conflict in their own villages.
+                  PLIGHT was founded with a singular focus: taking artificial intelligence out of
+                  the cloud and embedding it directly into the physical world. Our foundational
+                  engineering didn&apos;t happen in a sterile lab—it started by deploying
+                  mission-critical systems in the extreme, off-grid environments of Najibabad.
                 </p>
                 <p>
-                  Families in Bijnor and nearby regions faced dangerous encounters with
-                  leopards, tigers, and elephants. These incidents brought fear, injuries,
-                  and real risk to human life. The founders believed technology should not
-                  only innovate industries ? it must protect lives.
-                </p>
-                <p>
-                  What began as a local problem became a mission: engineering intelligent
-                  systems that make rural communities safer, without harming wildlife.
+                  To operate autonomously in these challenging conditions, we had to master the
+                  integration of high-performance neural accelerators, ruggedized microcontrollers,
+                  and low-power telemetry. What began as a localized hardware deployment rapidly
+                  evolved into a robust architecture for industrial edge computing.
                 </p>
               </div>
             </div>
@@ -126,7 +125,7 @@ function RuralSafetyNetworkMap() {
             </span>
           </div>
           <span className="font-heading type-body-sm font-bold" style={{ color: MAP.text }}>
-            Safety Network Active
+            Edge Network Active
           </span>
           <span className="type-micro hidden font-medium sm:inline" style={{ color: MAP.muted }}>
             Bijnor
@@ -303,13 +302,13 @@ function RuralSafetyNetworkMap() {
             className="type-micro absolute left-[6%] top-[22%] font-semibold uppercase tracking-wider"
             style={{ color: "rgba(22, 163, 74, 0.9)" }}
           >
-            Forest
+            Field Zone
           </span>
           <span
             className="type-micro absolute right-[8%] top-[22%] font-semibold uppercase tracking-wider"
             style={{ color: MAP.cyan }}
           >
-            Village
+            Deploy
           </span>
 
           {floatingChips.map((chip) => (
@@ -329,7 +328,7 @@ function RuralSafetyNetworkMap() {
             <span className="font-semibold" style={{ color: MAP.text }}>
               Najibabad, Bijnor
             </span>
-            {" ? "}Where innovation meets rural reality
+            {" — "}Field-tested edge AI engineering hub
           </p>
         </div>
       </div>

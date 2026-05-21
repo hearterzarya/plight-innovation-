@@ -1,5 +1,6 @@
 import { MapPin, Mail, Handshake, Play } from "lucide-react";
 import Link from "next/link";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
@@ -10,7 +11,7 @@ const contacts = [
     icon: Mail,
     title: "General Inquiries",
     email: "contact@plightinnovation.com",
-    description: "Questions about PLIGHT products, deployments, and rural safety technology.",
+    description: "Questions about PLIGHT edge AI hardware, deployments, and enterprise integration.",
   },
   {
     icon: Handshake,
@@ -22,14 +23,15 @@ const contacts = [
     icon: Play,
     title: "Product Demos",
     email: "demo@plightinnovation.com",
-    description: "Schedule a live demonstration of AI monitoring and deterrent systems.",
+    description: "Schedule a live demonstration of edge AI vision nodes and telemetry systems.",
   },
 ];
 
 export function ContactInfo() {
   return (
-    <Section className="section-padding">
-      <Container>
+    <Section className="section-padding overflow-hidden">
+      <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} />
+      <Container className="relative z-10">
         <div className="grid gap-6 md:grid-cols-3">
           {contacts.map((item) => (
             <GlassCard key={item.email} className="flex h-full flex-col p-6 sm:p-7">
@@ -51,7 +53,7 @@ export function ContactInfo() {
           <div className="flex-1">
             <h2 className="type-h4 text-white">Headquarters</h2>
             <p className="type-body-sm mt-1 text-text-cool">
-              PLIGHT Innovation Private Limited · Najibabad, Bijnor, Uttar Pradesh, India
+              Plight Innovation Pvt. Ltd. · Najibabad, Bijnor, Uttar Pradesh, India
             </p>
           </div>
           <Link href="mailto:contact@plightinnovation.com">

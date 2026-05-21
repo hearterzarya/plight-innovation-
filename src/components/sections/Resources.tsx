@@ -6,6 +6,7 @@ import { FileText, Download, ChevronDown, Mail } from "lucide-react";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
@@ -13,36 +14,36 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const specifications = [
-  { product: "AI Wildlife Monitoring System", spec: "360° camera, 100–150m range, AI species detection, 20s video alerts, mobile push" },
-  { product: "Wildlife Repellent Device", spec: "Multi-color flashing lights, sound alerts, automatic activation, solar-ready enclosure" },
-  { product: "Smart Rural Protection", spec: "IoT mesh networking, coordinated village alerts, field-ready manufacturing" },
-  { product: "Detection & Alerts", spec: "Real-time timestamps, GPS location, confidence scoring, forest authority notifications" },
+  { product: "Edge AI Vision Node", spec: "360° camera, 100–150m range, on-device NPU inference, custom detection classes, secure telemetry" },
+  { product: "Autonomous Telemetry Node", spec: "Solar-ready enclosure, 4G/LTE modem, GPS/GNSS, LoRa option, ruggedized MCU" },
+  { product: "Decentralized IoT Network", spec: "Wireless mesh, edge synchronization, remote node management, field-ready manufacturing" },
+  { product: "Edge Data Payload", spec: "Inference latency, detection class, confidence score, GPS coordinates, secure sync status" },
 ];
 
 const faqs = [
   {
-    q: "What wildlife species can the AI system detect?",
-    a: "The system is trained for high-risk species including elephants, tigers, and leopards, with ongoing model refinement for additional categories and forest-fire events.",
+    q: "What detection classes can edge AI models support?",
+    a: "PLIGHT deploys custom object detection pipelines tailored per use case—industrial monitoring, environmental sensing, and mission-critical field applications—with ongoing model optimization at the edge.",
   },
   {
-    q: "What is the detection range?",
-    a: "Production systems monitor approximately 100 to 150 meters in all directions. Earlier prototype milestones were validated at 40m and 60m during staged field testing.",
+    q: "What is the neural vision range?",
+    a: "Production edge nodes monitor approximately 100 to 150 meters. Earlier prototype milestones were validated at 40m and 60m during staged field testing.",
   },
   {
-    q: "How are alerts delivered?",
-    a: "Detections trigger instant mobile push notifications with species type, confidence level, timestamp, GPS location, and optional 20-second video evidence.",
+    q: "How is telemetry delivered?",
+    a: "Detections trigger secure payload transmission via 4G/LTE with inference metadata, confidence level, timestamp, GPS/GNSS coordinates, and optional event logs.",
   },
   {
-    q: "Where has PLIGHT been deployed?",
-    a: "Over 100 villages in the Bijnor region of Uttar Pradesh, with AI monitoring field trials at Jim Corbett National Park and active forest department collaboration.",
+    q: "Where has PLIGHT deployed edge infrastructure?",
+    a: "Over 100 active edge nodes in demanding off-grid environments, with rigorous field validation and production-scale hardware manufacturing capability.",
   },
   {
-    q: "Is the deterrent wildlife-safe?",
-    a: "Yes. PLIGHT systems use non-lethal light and sound deterrence designed to protect communities without harming animals.",
+    q: "Is hardware production-ready for enterprise deployment?",
+    a: "Yes. PLIGHT systems use ruggedized industrial enclosures, solar-backed power architecture, and standardized components designed for continuous 24/7 autonomous operation.",
   },
   {
-    q: "How can government partners request a demo?",
-    a: "Contact our team at contact@plightinnovation.com or visit the Contact page to schedule a product demonstration or deployment discussion.",
+    q: "How can enterprise partners request a demo?",
+    a: "Contact our team at contact@plightinnovation.com or visit the Contact page to schedule a technical demonstration or deployment discussion.",
   },
 ];
 
@@ -90,7 +91,7 @@ export function Resources() {
             <SectionLabel>Specifications</SectionLabel>
             <SectionHeading
               title="Product & System Specifications"
-              subtitle="Technical overview of PLIGHT wildlife safety systems for procurement and partnership review."
+              subtitle="Technical overview of PLIGHT edge AI and embedded hardware systems for procurement and partnership review."
               align="center"
             />
           </AnimateIn>
@@ -120,8 +121,9 @@ export function Resources() {
         </Container>
       </Section>
 
-      <Section id="brochure" className="section-padding bg-bg-midnight/30">
-        <Container>
+      <Section id="brochure" className="section-padding overflow-hidden bg-bg-midnight/30">
+        <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} />
+        <Container className="relative z-10">
           <AnimateIn>
             <GlassCard className="flex flex-col items-center gap-6 p-8 text-center sm:flex-row sm:p-10 sm:text-left">
               <FileText className="h-12 w-12 shrink-0 text-cyan-400" aria-hidden />
@@ -149,7 +151,7 @@ export function Resources() {
             <SectionLabel>FAQs</SectionLabel>
             <SectionHeading
               title="Frequently Asked Questions"
-              subtitle="Common questions from forest departments, rural development bodies, and technology partners."
+              subtitle="Common questions from enterprise partners, integrators, and technology collaborators."
               align="center"
             />
           </AnimateIn>

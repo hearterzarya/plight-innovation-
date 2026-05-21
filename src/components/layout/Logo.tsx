@@ -32,7 +32,7 @@ export function Logo({
       >
         <Image
           src="/logo.png"
-          alt="PLIGHT Innovation logo"
+          alt="PLIGHT logo"
           width={dimensions.px}
           height={dimensions.px}
           className="h-full w-full object-contain"
@@ -40,14 +40,14 @@ export function Logo({
         />
       </div>
       {showWordmark && (
-        <div className={cn("flex flex-col", wordmarkClassName)}>
-          <span className="font-heading text-sm font-bold tracking-wide text-white">
-            PLIGHT
-          </span>
-          <span className="type-caption uppercase tracking-[0.15em] text-text-cool">
-            Innovation
-          </span>
-        </div>
+        <span
+          className={cn(
+            "font-heading text-sm font-bold tracking-wide text-white",
+            wordmarkClassName
+          )}
+        >
+          PLIGHT
+        </span>
       )}
     </div>
   );

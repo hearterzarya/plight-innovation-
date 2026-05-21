@@ -4,7 +4,7 @@ import { Resources } from "@/components/sections/Resources";
 
 export const metadata = pageMetadata(
   "Resources",
-  "Product specifications, brochures, and FAQs for PLIGHT wildlife safety systems."
+  "Product specifications, technical brochures, and FAQs for PLIGHT edge AI and embedded hardware systems."
 );
 
 export default function ResourcesPage() {

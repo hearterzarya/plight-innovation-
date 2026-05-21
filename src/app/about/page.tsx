@@ -9,15 +9,15 @@ import { InnovationJourney } from "@/components/sections/InnovationJourney";
 
 export const metadata = pageMetadata(
   "About",
-  "Our mission, origin story, team, and innovation journey — building wildlife safety technology from Bijnor, Uttar Pradesh."
+  "Mission, engineering journey, and edge AI expertise — production-ready embedded systems forged in real-world field conditions."
 );
 
 export default function AboutPage() {
   return (
     <PageShell
       label="About PLIGHT"
-      title="Mission, Team & Innovation Journey"
-      subtitle="Deep-tech wildlife safety born in Bijnor — engineered for government-scale rural protection."
+      title="Mission & Engineering Journey"
+      subtitle="Forged in extreme real-world conditions—engineered for global, production-scale edge intelligence."
     >
       <Mission />
       <Problem />

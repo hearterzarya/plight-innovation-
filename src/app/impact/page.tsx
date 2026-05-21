@@ -4,16 +4,16 @@ import { Impact } from "@/components/sections/Impact";
 import { GovernmentClienteleCarousel } from "@/components/sections/GovernmentClienteleCarousel";
 
 export const metadata = pageMetadata(
-  "Impact",
-  "100+ village deployments in Bijnor, government collaboration, and measurable wildlife safety impact across Uttar Pradesh and Uttarakhand."
+  "Production Deployments",
+  "100+ active edge nodes, field-tested embedded AI, and production-ready deployments across demanding real-world environments."
 );
 
 export default function ImpactPage() {
   return (
     <PageShell
-      label="Impact"
+      label="Production Deployments"
       title="Real-World Deployment at Scale"
-      subtitle="Government partnerships, village coverage, and field-proven outcomes across India's forest-fringe communities."
+      subtitle="From extreme off-grid environments to commercial hardware manufacturing—edge systems built for continuous performance."
     >
       <Impact />
       <GovernmentClienteleCarousel />

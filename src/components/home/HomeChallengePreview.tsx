@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, PawPrint, BellOff, Clock, TriangleAlert } from "lucide-react";
+import { ArrowRight, Timer, Cpu, Zap, Radio } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
@@ -8,43 +9,44 @@ import { Button } from "@/components/ui/button";
 
 const highlights = [
   {
-    icon: PawPrint,
-    title: "Human–Wildlife Conflict",
+    icon: Timer,
+    title: "Real-Time Local Processing",
     description:
-      "Forest-fringe villages face recurring encounters with elephants, tigers, and leopards — often with limited early warning.",
-    tag: "Challenge",
+      "Bypassing cloud dependency by processing heavy AI models directly on the hardware. This ensures instant, mission-critical decision-making when milliseconds matter.",
+    tag: "Latency",
   },
   {
-    icon: BellOff,
-    title: "Delayed Community Response",
+    icon: Cpu,
+    title: "Advanced Neural Vision",
     description:
-      "Traditional deterrents lack intelligent detection, leaving residents vulnerable during critical night-time hours.",
-    tag: "Risk",
+      "Integrating high-efficiency neural accelerators with robust microcontrollers to unlock deep learning and computer vision capabilities in extreme, off-grid environments.",
+    tag: "Capability",
   },
   {
-    icon: Clock,
-    title: "Slow Manual Monitoring",
+    icon: Zap,
+    title: "24/7 Autonomous Execution",
     description:
-      "Forest departments cannot scale human patrols across hundreds of villages and vast border corridors.",
-    tag: "Scale",
+      "Engineered for absolute power efficiency. Our edge computing systems run continuously on independent power grids, requiring zero manual intervention.",
+    tag: "Efficiency",
   },
   {
-    icon: TriangleAlert,
-    title: "Life & Livelihood Impact",
+    icon: Radio,
+    title: "Resilient Telemetry",
     description:
-      "Crop damage, injuries, and fatalities demand technology that is field-ready and government-deployable.",
-    tag: "Impact",
+      "Equipped with seamless 4G, LoRa, and GPS telemetry, ensuring uninterrupted data synchronization and precise remote management from anywhere.",
+    tag: "Connectivity",
   },
 ];
 
 export function HomeChallengePreview() {
   return (
-    <Section className="section-padding">
-      <Container>
+    <Section className="section-padding overflow-hidden bg-bg-deep">
+      <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} />
+      <Container className="relative z-10">
         <SectionHeader
-          label="The Challenge"
-          title="Rural Communities Need Smarter Protection"
-          subtitle="Human–animal conflict threatens lives, crops, and forest-border livelihoods across India."
+          label="The Edge Revolution"
+          title="Architecting a Smarter World with Embedded Intelligence"
+          subtitle="Traditional cloud computing is too slow for real-world action. We bring high-performance neural processing directly to the hardware—building a faster, resilient, and fully autonomous physical world."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item) => (

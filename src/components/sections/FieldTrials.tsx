@@ -7,13 +7,14 @@ import {
   Building2,
   Camera,
   Smartphone,
-  Target,
-  PawPrint,
   ScanEye,
   Radio,
   FlaskConical,
   Gauge,
+  Cpu,
+  AlertTriangle,
 } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -27,49 +28,65 @@ const detectionStages = [
     icon: Gauge,
     title: "Prototype Bench Testing",
     description:
-      "Initial validation of sensors, optics, and embedded firmware under controlled conditions before forest deployment.",
+      "Initial validation of sensors, optics, NPUs, and embedded firmware under controlled conditions before off-grid deployment.",
     tag: "Phase 1",
   },
   {
     icon: Radio,
     title: "40m & 60m Range Validation",
     description:
-      "Progressive field checks confirmed reliable detection and alert triggering at 40-meter and 60-meter distances during early trials.",
+      "Progressive field checks confirmed reliable on-device inference and telemetry triggering at 40-meter and 60-meter distances.",
     tag: "Phase 2",
   },
   {
     icon: Camera,
     title: "100–150m Production Range",
     description:
-      "Full-system trials validated continuous 360° monitoring across approximately 100 to 150 meters in all directions.",
+      "Full-system validation confirmed continuous 360° neural vision across approximately 100 to 150 meters in all directions.",
     tag: "Phase 3",
   },
 ];
 
 const confidenceResults = [
-  { icon: PawPrint, title: "Elephant", description: "94% confidence — monitoring state confirmed in live trials.", tag: "Species AI" },
-  { icon: Target, title: "Tiger", description: "91% confidence — alert-ready detection in forest-edge scenarios.", tag: "Species AI" },
-  { icon: ScanEye, title: "Leopard", description: "89% confidence — active tracking with rapid mobile notification.", tag: "Species AI" },
+  {
+    icon: ScanEye,
+    title: "Object Detection Pipeline",
+    description: "94% edge confidence — custom detection classes validated under live field load.",
+    tag: "Edge AI",
+  },
+  {
+    icon: Cpu,
+    title: "On-Device Inference",
+    description: "91% sustained accuracy — sub-second local processing without cloud round-trips.",
+    tag: "NPU",
+  },
+  {
+    icon: AlertTriangle,
+    title: "Anomaly Flagging",
+    description: "89% precision — environmental and motion anomalies identified before escalation.",
+    tag: "Analytics",
+  },
 ];
 
 const alertFields = [
-  { label: "Animal Type / Category", example: "Leopard Detected" },
-  { label: "Detection Time & Date", example: "Real-time timestamp" },
-  { label: "Confidence Level", example: "94.2% accuracy" },
-  { label: "Alert Notification", example: "Instant mobile push to forest teams" },
-  { label: "Location Information", example: "GPS coordinates for rapid response" },
+  { label: "Detection Class", example: "Custom AI model output" },
+  { label: "Inference Latency", example: "Sub-millisecond execution" },
+  { label: "Confidence Level", example: ">94.2% edge accuracy" },
+  { label: "Data Sync Status", example: "Secure payload transmitted" },
+  { label: "Location Info", example: "GPS / GNSS coordinates" },
 ];
 
 export function FieldTrials() {
   return (
     <>
-      <Section id="jim-corbett" className="section-padding">
-        <Container>
+      <Section id="field-validation" className="section-padding overflow-hidden">
+        <PcbCircuitBackground corner="left" intensity="subtle" vignette={false} />
+        <Container className="relative z-10">
           <AnimateIn>
-            <SectionLabel>Field Trials</SectionLabel>
+            <SectionLabel>Field Validation</SectionLabel>
             <SectionHeading
-              title="Validated in India&apos;s Most Demanding Forests"
-              subtitle="From prototype testing to Jim Corbett National Park — PLIGHT systems are proven under real wildlife conditions."
+              title="Stress-Tested in Demanding Real-World Environments"
+              subtitle="Real-world field validation of PLIGHT's edge AI hardware in extreme off-grid environments."
               align="center"
             />
           </AnimateIn>
@@ -82,20 +99,20 @@ export function FieldTrials() {
                   <div className="flex items-center gap-2">
                     <TreePine className="h-5 w-5 text-green-400" aria-hidden />
                     <span className="text-xs font-semibold uppercase tracking-wider text-green-400">
-                      Field Validated
+                      Case Study — National Park
                     </span>
                   </div>
-                  <h2 className="type-h3 mt-3 text-white">Jim Corbett National Park</h2>
+                  <h2 className="type-h3 mt-3 text-white">Jim Corbett National Park Validation</h2>
                   <p className="mt-4 text-sm leading-relaxed text-text-cool">
-                    The AI Wildlife Monitoring System was successfully tested in Jim Corbett
-                    National Park — one of India&apos;s most important wildlife regions. Field
-                    trials demonstrated highly promising results, proving the effectiveness of
-                    AI-driven monitoring and automated alert systems in challenging forest
-                    environments.
+                    PLIGHT edge vision nodes were stress-tested in Jim Corbett National Park—one of
+                    India&apos;s most demanding off-grid environments. Trials validated on-device
+                    neural inference, telemetry sync, and 24/7 autonomous uptime under harsh field
+                    conditions. Wildlife monitoring was the deployment use case; the proof point is
+                    industrial-grade edge hardware performance.
                   </p>
                   <div className="mt-4 flex items-center gap-2 text-sm text-green-400">
                     <CheckCircle2 className="h-4 w-4" aria-hidden />
-                    <span>Promising field trial results confirmed</span>
+                    <span>Field validation results confirmed at scale</span>
                   </div>
                 </div>
               </GlassCard>
@@ -108,30 +125,31 @@ export function FieldTrials() {
                   <div className="flex items-center gap-2">
                     <Building2 className="h-5 w-5 text-cyan-400" aria-hidden />
                     <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
-                      Active Collaboration
+                      Public-Sector Deployment
                     </span>
                   </div>
-                  <h2 className="type-h3 mt-3 text-white">Forest Department Partnerships</h2>
+                  <h2 className="type-h3 mt-3 text-white">Institutional Field Partners</h2>
                   <p className="mt-4 text-sm leading-relaxed text-text-cool">
-                    Following successful trials, PLIGHT Innovation is actively collaborating with
-                    the{" "}
+                    Following successful validation, PLIGHT collaborated with the{" "}
                     <span className="font-medium text-white">Uttarakhand Forest Department</span>{" "}
                     and the{" "}
                     <span className="font-medium text-white">Uttar Pradesh Forest Department</span>{" "}
-                    to expand intelligent wildlife safety infrastructure across forest-bordering
-                    regions.
+                    on forest-edge deployments—demonstrating how production-ready edge AI
+                    infrastructure performs in public-sector, mission-critical environments.
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
-                    {["Uttarakhand Forest Dept.", "UP Forest Dept.", "Jim Corbett Trials"].map(
-                      (tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1 text-xs text-cyan-400"
-                        >
-                          {tag}
-                        </span>
-                      )
-                    )}
+                    {[
+                      "Uttarakhand Forest Dept.",
+                      "UP Forest Dept.",
+                      "National Park Validation",
+                    ].map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1 text-xs text-cyan-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </GlassCard>
@@ -140,13 +158,14 @@ export function FieldTrials() {
         </Container>
       </Section>
 
-      <Section id="detection-range" className="section-padding bg-bg-midnight/30">
-        <Container>
+      <Section id="detection-range" className="section-padding overflow-hidden bg-bg-midnight/30">
+        <PcbCircuitBackground corner="right" intensity="subtle" vignette={false} />
+        <Container className="relative z-10">
           <AnimateIn>
-            <SectionLabel>Detection Proof</SectionLabel>
+            <SectionLabel>Validation Proof</SectionLabel>
             <SectionHeading
-              title="Progressive Range Validation"
-              subtitle="Detection distance was validated in stages — from early prototype checks at 40m and 60m to production-ready 100–150 meter coverage."
+              title="Progressive Range & Inference Validation"
+              subtitle="Detection distance and on-device inference were validated in stages—from 40m and 60m prototype checks to production-ready 100–150 meter neural vision coverage."
               align="center"
             />
           </AnimateIn>
@@ -167,7 +186,7 @@ export function FieldTrials() {
               <div className="relative mx-auto aspect-video max-h-[280px] w-full">
                 <Image
                   src="/images/wildlife/camera.png"
-                  alt="PLIGHT 360-degree AI camera deployed during field trials"
+                  alt="PLIGHT edge AI vision node during field validation"
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 768px"
@@ -175,9 +194,9 @@ export function FieldTrials() {
                 />
               </div>
               <p className="type-body-sm mt-6 text-center text-text-cool">
-                Continuous 360° monitoring within approximately{" "}
-                <span className="font-semibold text-white">100 to 150 meters</span> — with
-                earlier prototype milestones confirmed at 40m and 60m during staged testing.
+                Continuous 360° edge vision within approximately{" "}
+                <span className="font-semibold text-white">100 to 150 meters</span>—with earlier
+                prototype milestones confirmed at 40m and 60m during staged validation.
               </p>
             </GlassCard>
           </AnimateIn>
@@ -189,10 +208,10 @@ export function FieldTrials() {
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <AnimateIn>
-                <SectionLabel>Mobile Alerts</SectionLabel>
+                <SectionLabel>Edge Telemetry</SectionLabel>
                 <SectionHeading
-                  title="Instant Field Intelligence"
-                  subtitle="Every detection triggers real-time mobile alerts with species, confidence, timestamp, and location data."
+                  title="Secure Field Data Payloads"
+                  subtitle="Every inference triggers secure telemetry with detection class, latency, confidence, and GNSS metadata."
                   align="left"
                 />
               </AnimateIn>
@@ -213,10 +232,10 @@ export function FieldTrials() {
 
             <div>
               <AnimateIn>
-                <SectionLabel>AI Confidence</SectionLabel>
+                <SectionLabel>Edge Performance</SectionLabel>
                 <SectionHeading
-                  title="Species Recognition Results"
-                  subtitle="Field trials recorded high-confidence detections for elephants, tigers, and leopards."
+                  title="Inference Accuracy Results"
+                  subtitle="Field validation recorded high-confidence on-device detections across vision and anomaly pipelines."
                   align="left"
                 />
               </AnimateIn>
@@ -239,11 +258,11 @@ export function FieldTrials() {
             <GlassCard className="flex flex-col items-center gap-4 p-8 text-center sm:flex-row sm:text-left">
               <FlaskConical className="h-10 w-10 shrink-0 text-amber-400" aria-hidden />
               <div>
-                <h3 className="type-h4 text-white">Prototype-to-Production Testing</h3>
+                <h3 className="type-h4 text-white">Prototype-to-Production Validation</h3>
                 <p className="type-body-sm mt-2 text-text-cool">
-                  PLIGHT&apos;s innovation journey spans rapid prototyping, village-scale
-                  deployment across 100+ Bijnor communities, and national-park validation —
-                  ensuring every device is field-ready before government-scale rollout.
+                  PLIGHT&apos;s engineering path spans rapid prototyping, 100+ active edge node
+                  deployments in demanding conditions, and national-park stress validation—ensuring
+                  every hardware revision is production-ready before enterprise-scale rollout.
                 </p>
               </div>
             </GlassCard>

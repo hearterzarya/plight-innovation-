@@ -1,43 +1,45 @@
 ﻿"use client";
 
 import { X, Check } from "lucide-react";
+import { PcbCircuitBackground } from "@/components/effects/PcbCircuitBackground";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
 const traditional = [
-  "Manual warnings and delayed response",
-  "No automated detection systems",
-  "Constant fear among villagers",
-  "Limited scalability across regions",
-  "No integrated alert technology",
+  "Cloud-dependent AI with high latency",
+  "Consumer-grade hardware unsuited for the field",
+  "No integrated edge telemetry architecture",
+  "Limited scalability from prototype to production",
+  "Fragmented software and hardware stacks",
 ];
 
 const plight = [
-  "AI-powered 360° wildlife surveillance",
-  "Real-time video alerts to forest authorities",
-  "Automatic deterrent lights and sound response",
-  "100+ village deployment proven",
-  "Field-tested at Jim Corbett National Park",
+  "Zero-latency on-device neural processing",
+  "Ruggedized industrial enclosures for extreme environments",
+  "Secure 4G/LTE and GPS telemetry integration",
+  "100+ active edge nodes field-validated",
+  "End-to-end embedded AI from concept to commercial scale",
 ];
 
 const reasons = [
-  "Built from real field problems in Bijnor",
-  "AI Wildlife Monitoring tested at Jim Corbett",
-  "Designed for Indian rural & forest conditions",
-  "Engineering-led product development",
-  "Uttarakhand & UP Forest Department partnerships",
-  "Human-first innovation approach",
+  "Engineered in real off-grid field conditions",
+  "Production-ready embedded AI architecture",
+  "Designed for industrial and enterprise B2B deployment",
+  "Full-stack hardware and firmware development",
+  "Neural vision, telemetry, and automation in one platform",
+  "From prototype to global manufacturing scale",
 ];
 
 export function WhyPlight() {
   return (
-    <section className="section-padding relative">
+    <section className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 bg-bg-midnight/30" />
-      <div className="container-custom relative mx-auto">
+      <PcbCircuitBackground corner="right" intensity="subtle" vignette={false} />
+      <div className="container-custom relative z-10 mx-auto">
         <AnimateIn>
           <SectionLabel>Why Us</SectionLabel>
-          <SectionHeading title="Why PLIGHT Innovation?" align="center" />
+          <SectionHeading title="Why PLIGHT?" align="center" />
         </AnimateIn>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -49,11 +51,7 @@ export function WhyPlight() {
             />
           </AnimateIn>
           <AnimateIn delay={0.2}>
-            <ComparisonCard
-              title="PLIGHT Innovation"
-              items={plight}
-              type="positive"
-            />
+            <ComparisonCard title="PLIGHT" items={plight} type="positive" />
           </AnimateIn>
         </div>
 
@@ -94,9 +92,7 @@ function ComparisonCard({
       }`}
     >
       <h3
-        className={`type-h3 ${
-          isPositive ? "text-cyan-400" : "text-text-cool"
-        }`}
+        className={`type-h3 ${isPositive ? "text-cyan-400" : "text-text-cool"}`}
       >
         {title}
       </h3>

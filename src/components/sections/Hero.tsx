@@ -12,16 +12,16 @@ import {
   Cpu,
   Camera,
   Bell,
-  Volume2,
   Zap,
-  PawPrint,
   ScanEye,
-  Target,
-  Video,
+  Thermometer,
+  AlertTriangle,
+  Activity,
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GridBackground } from "@/components/effects/GridBackground";
+import { PlightBackground } from "@/components/effects/PlightBackground";
 import { FloatingParticles } from "@/components/effects/FloatingParticles";
 import { cn } from "@/lib/utils";
 
@@ -39,52 +39,48 @@ const HERO = {
   border: "rgba(203, 213, 225, 0.14)",
 } as const;
 
-const WILDLIFE_ASSETS = {
+const HERO_NODE_IMAGE = "/images/plight/hero.png";
+
+const HERO_ASSETS = {
   camera: "/images/wildlife/camera.png",
   cameraAlt: "/images/ai/360-camera.png",
-  elephant: "/images/wildlife/elephant.png",
-  tiger: "/images/wildlife/tiger.png",
-  leopard: "/images/wildlife/leopard.png",
 } as const;
 
 const trustBadges = [
-  { icon: MapPin, label: "100+ Villages Deployed" },
-  { icon: Shield, label: "Wildlife Safety Technology" },
-  { icon: Cpu, label: "AI Wildlife Monitoring" },
-  { icon: Radio, label: "Built in Bijnor, UP" },
+  { icon: MapPin, label: "24/7 Autonomous Operations" },
+  { icon: Shield, label: "Field-Tested · Industrial-Grade Embedded" },
+  { icon: Cpu, label: "Edge AI · Real-Time Neural Vision" },
+  { icon: Radio, label: "IoT Ready · Secure 4G & GPS Telemetry" },
 ];
 
 const detectionCards = [
   {
-    id: "elephant",
-    label: "Elephant",
-    status: "Monitoring",
+    id: "object-detection",
+    label: "Dynamic Object Detection",
+    status: "Pipeline Active",
     confidence: "94%",
     color: "green" as const,
-    icon: PawPrint,
-    image: WILDLIFE_ASSETS.elephant,
+    icon: ScanEye,
     position: "bottom-[18%] left-[4%] sm:left-[6%]",
     delay: 0,
   },
   {
-    id: "tiger",
-    label: "Tiger",
-    status: "Alert Ready",
+    id: "thermal-motion",
+    label: "Thermal / Motion Analysis",
+    status: "Monitoring",
     confidence: "91%",
     color: "amber" as const,
-    icon: Target,
-    image: WILDLIFE_ASSETS.tiger,
+    icon: Thermometer,
     position: "top-[14%] left-[4%] sm:left-[8%]",
     delay: 0.5,
   },
   {
-    id: "leopard",
-    label: "Leopard",
-    status: "Active",
+    id: "anomaly",
+    label: "Anomaly Detection",
+    status: "Edge Alert",
     confidence: "89%",
     color: "cyan" as const,
-    icon: ScanEye,
-    image: WILDLIFE_ASSETS.leopard,
+    icon: AlertTriangle,
     position: "top-[16%] right-[4%] sm:right-[6%]",
     delay: 1,
   },
@@ -98,26 +94,32 @@ const floatingChips: {
   delay: number;
   hideMobile?: boolean;
 }[] = [
-  { label: "GPS Locked", icon: MapPin, color: HERO.green, position: "bottom-[32%] left-[2%]", delay: 0 },
+  { label: "GPS Node Status", icon: MapPin, color: HERO.green, position: "bottom-[32%] left-[2%]", delay: 0 },
   {
-    label: "Sound Alert Active",
-    icon: Volume2,
-    color: HERO.amber,
+    label: "Telemetry Sync",
+    icon: Radio,
+    color: HERO.cyan,
     position: "top-[38%] left-[0%]",
     delay: 0.3,
     hideMobile: true,
   },
-  { label: "Deterrent Active", icon: Zap, color: HERO.cyan, position: "bottom-[42%] right-[2%]", delay: 0.6 },
   {
-    label: "20s Clip Recorded",
-    icon: Video,
+    label: "Edge Confidence Score",
+    icon: Activity,
+    color: HERO.amber,
+    position: "bottom-[42%] right-[2%]",
+    delay: 0.6,
+  },
+  {
+    label: "Inference Live",
+    icon: Zap,
     color: HERO.amber,
     position: "top-[6%] right-[2%]",
     delay: 0.9,
     hideMobile: true,
   },
   {
-    label: "Zone Protected",
+    label: "Node Secure",
     icon: Shield,
     color: HERO.green,
     position: "top-[42%] right-[0%]",
@@ -141,37 +143,11 @@ export function Hero({ compact = false }: { compact?: boolean }) {
       className="relative flex min-h-[calc(100dvh-4rem)] flex-col justify-center overflow-x-hidden pt-16 sm:min-h-screen"
       style={{ backgroundColor: HERO.bg }}
     >
-      <GridBackground />
+      <PlightBackground variant="hero" priority />
+      <div className="absolute inset-0 opacity-40">
+        <GridBackground />
+      </div>
       {!compact && <FloatingParticles />}
-
-      {/* Hero-specific atmosphere */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 60% at 78% 45%, rgba(0, 217, 255, 0.09) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(22, 163, 74, 0.04) 0%, transparent 50%)",
-        }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          boxShadow: "inset 0 0 120px 40px rgba(5, 10, 20, 0.85)",
-        }}
-        aria-hidden
-      />
-      {/* Forest silhouette */}
-      <svg
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 w-full opacity-[0.12] sm:h-32"
-        viewBox="0 0 1200 80"
-        preserveAspectRatio="none"
-        aria-hidden
-      >
-        <path
-          fill="#16A34A"
-          d="M0 80 L0 50 Q80 20 160 45 Q240 10 320 40 Q400 15 480 38 Q560 8 640 35 Q720 18 800 42 Q880 12 960 36 Q1040 22 1120 48 L1200 35 L1200 80 Z"
-        />
-      </svg>
 
       <div className="container-custom relative w-full py-10 sm:py-14 lg:py-20">
         <div className="grid min-w-0 items-center gap-10 md:gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-x-16 xl:gap-x-20">
@@ -193,7 +169,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
                 style={{ background: HERO.cyan, boxShadow: `0 0 8px ${HERO.cyan}` }}
               />
               <span className="type-label tracking-[0.12em]" style={{ color: HERO.cyan }}>
-                Wildlife Safety | Rural Innovation
+                EDGE COMPUTING | PRODUCTION-READY AI HARDWARE
               </span>
             </motion.div>
 
@@ -204,8 +180,8 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               variants={fadeUp}
               className="type-display text-balance text-white"
             >
-              AI-Powered Wildlife Safety for{" "}
-              <span className="hero-gradient-text">Smarter Villages</span>
+              Scalable Embedded AI Solutions for{" "}
+              <span className="hero-gradient-text">Real-World Production</span>
             </motion.h1>
 
             <motion.p
@@ -216,9 +192,9 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               className="type-hero-lead mt-5 sm:mt-6"
               style={{ color: HERO.silver }}
             >
-              PLIGHT Innovation builds intelligent electronics, AI-enabled deterrent systems,
-              and smart rural protection technologies designed to reduce human-animal conflict
-              and protect communities.
+              PLIGHT designs and deploys industrial-grade edge computing systems. We integrate
+              advanced AI vision, robust microcontrollers, and IoT hardware to build intelligent,
+              24/7 autonomous solutions tailored for complex environments.
             </motion.p>
 
             <motion.div
@@ -230,13 +206,13 @@ export function Hero({ compact = false }: { compact?: boolean }) {
             >
               <Link href="/solutions" className="group">
                 <Button size="lg" className="shadow-lg shadow-cyan-500/20">
-                  Explore Our Innovation
+                  Explore Solutions
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/impact">
                 <Button variant="secondary" size="lg">
-                  View Impact
+                  View Technical Case Studies
                 </Button>
               </Link>
             </motion.div>
@@ -249,7 +225,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               className="type-body-sm mt-6 max-w-[520px]"
               style={{ color: HERO.muted }}
             >
-              Field-ready systems for forest-fringe and rural safety deployments.
+              PLIGHT builds production-ready Embedded AI systems that bring intelligence directly to the physical world.
             </motion.p>
 
             {!compact && (
@@ -294,7 +270,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
             transition={{ duration: 0.85, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="flex min-w-0 items-center justify-center lg:pl-2 xl:pl-4"
           >
-            {compact ? <HeroStaticVisual /> : <HeroMonitoringDashboard />}
+            <HeroEdgeNodeVisual />
           </motion.div>
         </div>
       </div>
@@ -302,23 +278,28 @@ export function Hero({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function HeroStaticVisual() {
+const HERO_NODE_WIDTH = 1086;
+const HERO_NODE_HEIGHT = 1449;
+
+function HeroEdgeNodeVisual() {
   return (
-    <div
-      className="relative mx-auto aspect-square w-full min-w-0 max-w-[min(100%,420px)] overflow-hidden rounded-3xl border p-6 sm:max-w-[480px]"
-      style={{
-        background: `linear-gradient(160deg, ${HERO.surface} 0%, ${HERO.bg} 100%)`,
-        borderColor: HERO.border,
-        boxShadow: "0 24px 64px rgba(0, 0, 0, 0.45)",
-      }}
-    >
+    <div className="relative mx-auto w-full min-w-0 max-w-[min(100%,440px)] sm:max-w-[500px] lg:max-w-[580px] xl:max-w-[620px]">
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[72%] w-[68%] -translate-x-1/2 -translate-y-[42%] rounded-full bg-cyan-400/14 blur-3xl"
+        aria-hidden
+      />
       <Image
-        src={WILDLIFE_ASSETS.camera}
-        alt="PLIGHT AI wildlife monitoring system — 360-degree field camera"
-        fill
-        className="object-contain p-4"
-        sizes="(max-width: 768px) 90vw, 480px"
+        src={HERO_NODE_IMAGE}
+        alt="PLIGHT edge AI vision node — solar-powered autonomous field deployment with neural vision camera"
+        width={HERO_NODE_WIDTH}
+        height={HERO_NODE_HEIGHT}
         priority
+        sizes="(max-width: 768px) 92vw, 620px"
+        className="relative z-10 h-auto w-full select-none"
+        style={{
+          filter:
+            "drop-shadow(0 0 48px rgba(34, 211, 238, 0.22)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35))",
+        }}
       />
     </div>
   );
@@ -349,7 +330,7 @@ function HeroMonitoringDashboard() {
             <div className="h-2 w-2 rounded-full" style={{ background: HERO.green }} />
           </div>
           <span className="type-micro font-semibold uppercase tracking-[0.15em]" style={{ color: HERO.cyan }}>
-            AI Wildlife Command
+            Edge AI Command
           </span>
           <div className="flex items-center gap-1">
             <Bell className="h-3 w-3" style={{ color: HERO.amber }} />
@@ -431,7 +412,7 @@ function HeroMonitoringDashboard() {
             <HeroCameraModule />
           </div>
 
-          {/* Wildlife detection cards */}
+          {/* Edge inference detection cards */}
           {detectionCards.map((card) => (
             <HeroDetectionCard key={card.id} card={card} />
           ))}
@@ -460,11 +441,11 @@ function HeroMonitoringDashboard() {
 }
 
 function HeroCameraModule() {
-  const [imgSrc, setImgSrc] = useState<string | null>(WILDLIFE_ASSETS.camera);
+  const [imgSrc, setImgSrc] = useState<string | null>(HERO_ASSETS.camera);
 
   const handleImageError = () => {
-    if (imgSrc === WILDLIFE_ASSETS.camera) {
-      setImgSrc(WILDLIFE_ASSETS.cameraAlt);
+    if (imgSrc === HERO_ASSETS.camera) {
+      setImgSrc(HERO_ASSETS.cameraAlt);
     } else {
       setImgSrc(null);
     }
@@ -522,7 +503,6 @@ function HeroDetectionCard({
 }: {
   card: (typeof detectionCards)[number];
 }) {
-  const [imgOk, setImgOk] = useState(true);
   const Icon = card.icon;
 
   const accent =
@@ -535,7 +515,7 @@ function HeroDetectionCard({
   return (
     <motion.div
       className={cn(
-        "absolute z-20 w-[100px] rounded-xl border p-2 backdrop-blur-md sm:w-[118px] sm:p-2.5 lg:w-[132px]",
+        "absolute z-20 w-[108px] rounded-xl border p-2 backdrop-blur-md sm:w-[128px] sm:p-2.5 lg:w-[148px]",
         card.position
       )}
       style={{
@@ -549,24 +529,13 @@ function HeroDetectionCard({
     >
       <div className="flex items-center gap-2">
         <div
-          className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border"
+          className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border"
           style={{ borderColor: HERO.border, background: `${accent}18` }}
         >
-          {imgOk ? (
-            <Image
-              src={card.image}
-              alt={card.label}
-              width={36}
-              height={36}
-              className="h-full w-full object-cover opacity-90"
-              onError={() => setImgOk(false)}
-            />
-          ) : (
-            <Icon className="h-4 w-4" style={{ color: accent }} />
-          )}
+          <Icon className="h-4 w-4" style={{ color: accent }} aria-hidden />
         </div>
         <div className="min-w-0">
-          <p className="type-caption truncate font-semibold" style={{ color: HERO.text }}>
+          <p className="type-caption font-semibold leading-tight" style={{ color: HERO.text }}>
             {card.label}
           </p>
           <p className="text-xs font-bold tabular-nums" style={{ color: accent }}>

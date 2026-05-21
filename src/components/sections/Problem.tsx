@@ -2,16 +2,14 @@
 
 import { motion } from "framer-motion";
 import {
-  AlertTriangle,
-  BellOff,
-  Clock,
-  HeartPulse,
-  MapPin,
-  PawPrint,
+  Timer,
+  Cpu,
+  Zap,
   Radio,
-  Trees,
-  TriangleAlert,
-  Users,
+  CloudOff,
+  Thermometer,
+  Battery,
+  WifiOff,
 } from "lucide-react";
 import { AnimateIn } from "@/components/shared/AnimateIn";
 import { SectionLabel } from "@/components/shared/SectionLabel";
@@ -83,56 +81,56 @@ const accentStyles: Record<
 };
 
 const challengeCards: {
-  icon: typeof AlertTriangle;
-  watermark: typeof PawPrint;
+  icon: typeof Timer;
+  watermark: typeof CloudOff;
   title: string;
   description: string;
   chip: string;
   accent: AccentKey;
 }[] = [
   {
-    icon: AlertTriangle,
-    watermark: PawPrint,
-    title: "Sudden Wildlife Movement",
+    icon: Timer,
+    watermark: CloudOff,
+    title: "The Cloud Bottleneck",
     description:
-      "Wild animals can approach villages without warning, creating immediate danger near homes, farms, and forest-fringe settlements.",
-    chip: "High Risk",
+      "Mission-critical physical operations cannot wait for cloud round-trips. They require zero-latency, on-device neural processing.",
+    chip: "Latency",
     accent: "amber",
   },
   {
-    icon: BellOff,
-    watermark: Clock,
-    title: "No Immediate Warning",
+    icon: Cpu,
+    watermark: Thermometer,
+    title: "Environmental Extremes",
     description:
-      "Traditional methods fail to alert residents and forest teams in time when animals enter populated areas.",
-    chip: "No Alert",
+      "Standard electronics fail in the field. Production-ready edge nodes must withstand harsh climates and physical wear.",
+    chip: "Hardware",
     accent: "cyan",
   },
   {
-    icon: HeartPulse,
-    watermark: TriangleAlert,
-    title: "Risk to Human Life",
+    icon: Zap,
+    watermark: Battery,
+    title: "Off-Grid Reliance",
     description:
-      "Encounters with leopards, tigers, and elephants can lead to injuries, fatalities, livestock loss, and fear among rural families.",
-    chip: "Human Safety",
+      "Continuous 24/7 AI operations demand ultra-efficient power management and independent solar integration for unsupervised execution.",
+    chip: "Power",
     accent: "danger",
   },
   {
     icon: Radio,
-    watermark: MapPin,
-    title: "Delayed Field Response",
+    watermark: WifiOff,
+    title: "Network Instability",
     description:
-      "Without real-time monitoring and evidence, authorities often receive information after the danger has already reached communities.",
-    chip: "Delayed Response",
+      "Remote deployments lack stable internet, necessitating resilient 4G/LTE and GPS telemetry for secure data synchronization.",
+    chip: "Connectivity",
     accent: "green",
   },
 ];
 
 const impactStrip = [
-  { icon: Trees, label: "Forest-edge risk" },
-  { icon: BellOff, label: "No early warning" },
-  { icon: AlertTriangle, label: "Livestock & property loss" },
-  { icon: Users, label: "Community fear" },
+  { icon: CloudOff, label: "Cloud latency limits" },
+  { icon: Thermometer, label: "Harsh field conditions" },
+  { icon: Battery, label: "Off-grid power demands" },
+  { icon: WifiOff, label: "Unstable connectivity" },
 ];
 
 export function Problem() {
@@ -141,7 +139,6 @@ export function Problem() {
       className="relative overflow-hidden py-[4.5rem] lg:py-[7.5rem]"
       style={{ backgroundColor: PROBLEM.bg }}
     >
-      {/* Background atmosphere */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[720px] -translate-x-1/2 rounded-full blur-[120px]"
         style={{ background: "radial-gradient(circle, rgba(245, 158, 11, 0.07) 0%, transparent 70%)" }}
@@ -156,52 +153,8 @@ export function Problem() {
         }}
         aria-hidden
       />
-      {/* Cyan scan lines */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-[18%] h-px opacity-20"
-        style={{ background: `linear-gradient(90deg, transparent, ${PROBLEM.cyan}, transparent)` }}
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-[42%] h-px opacity-10"
-        style={{ background: `linear-gradient(90deg, transparent, ${PROBLEM.cyan}, transparent)` }}
-        aria-hidden
-      />
-      {/* Amber danger dots */}
-      {[
-        { left: "12%", top: "28%" },
-        { left: "78%", top: "22%" },
-        { left: "88%", top: "55%" },
-        { left: "8%", top: "62%" },
-      ].map((dot, i) => (
-        <div
-          key={i}
-          className="pointer-events-none absolute h-1.5 w-1.5 animate-pulse rounded-full"
-          style={{
-            left: dot.left,
-            top: dot.top,
-            background: PROBLEM.amber,
-            boxShadow: `0 0 12px ${PROBLEM.amber}`,
-            animationDelay: `${i * 0.4}s`,
-          }}
-          aria-hidden
-        />
-      ))}
-      {/* Forest silhouette */}
-      <svg
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 w-full opacity-[0.14] sm:h-28"
-        viewBox="0 0 1200 80"
-        preserveAspectRatio="none"
-        aria-hidden
-      >
-        <path
-          fill="#16A34A"
-          d="M0 80 L0 48 Q60 18 120 42 Q180 8 240 36 Q300 14 360 38 Q420 10 480 34 Q540 16 600 40 Q660 12 720 36 Q780 20 840 44 Q900 14 960 38 Q1020 24 1080 46 L1200 32 L1200 80 Z"
-        />
-      </svg>
 
       <div className="container-custom relative mx-auto">
-        {/* Heading */}
         <AnimateIn className="mx-auto max-w-4xl text-center">
           <SectionLabel className="tracking-[0.14em]">The Challenge</SectionLabel>
           <h2
@@ -212,7 +165,7 @@ export function Problem() {
               letterSpacing: "-0.045em",
             }}
           >
-            The Real Challenge: Human–Animal Conflict
+            The Real Challenge: Scaling Edge Infrastructure
           </h2>
           <p
             className="mx-auto mt-6 max-w-[760px] leading-[1.6]"
@@ -221,12 +174,10 @@ export function Problem() {
               color: PROBLEM.muted,
             }}
           >
-            Rural communities across India face a growing crisis that demands intelligent,
-            field-ready technology.
+            Deploying AI in the real world demands bypassing the limitations of traditional cloud computing.
           </p>
         </AnimateIn>
 
-        {/* Challenge cards */}
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:gap-8 xl:grid-cols-4">
           {challengeCards.map((card, i) => (
             <AnimateIn key={card.title} delay={i * 0.08}>
@@ -235,7 +186,6 @@ export function Problem() {
           ))}
         </div>
 
-        {/* Impact strip */}
         <AnimateIn delay={0.35} className="mt-10 lg:mt-14">
           <div
             className="grid gap-3 rounded-[1.25rem] border p-4 sm:grid-cols-2 sm:gap-4 sm:p-5 lg:grid-cols-4 lg:rounded-[1.75rem]"
@@ -295,7 +245,6 @@ function ChallengeCard({
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Wildlife watermark */}
       <Watermark
         className={cn(
           "pointer-events-none absolute -bottom-4 -right-4 h-32 w-32 stroke-[0.75] sm:h-36 sm:w-36",
@@ -305,7 +254,6 @@ function ChallengeCard({
         aria-hidden
       />
 
-      {/* Status chip */}
       <span
         className={cn(
           "relative z-10 mb-5 inline-flex w-fit rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em]",
@@ -315,7 +263,6 @@ function ChallengeCard({
         {card.chip}
       </span>
 
-      {/* Icon */}
       <div
         className={cn(
           "relative z-10 mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 transition-all duration-300",
@@ -346,7 +293,6 @@ function ChallengeCard({
         {card.description}
       </p>
 
-      {/* Bottom accent line */}
       <div
         className="relative z-10 mt-6 h-px w-12 opacity-60 transition-all duration-300 group-hover:w-full group-hover:opacity-100"
         style={{ background: `linear-gradient(90deg, ${styles.line}, transparent)` }}

@@ -16,16 +16,15 @@ export function Vision() {
           <AnimateIn>
             <SectionLabel>Vision</SectionLabel>
             <h2 className="type-h2 mt-4 text-white">
-              Building the Future of Rural Safety Technology
+              Architecting Global Edge AI Infrastructure
             </h2>
             <p className="type-lead mt-6 max-w-[720px]">
-              PLIGHT Innovation is building a smarter ecosystem for wildlife protection,
-              rural safety, and AI-powered environmental monitoring — from village deterrent
-              devices across Bijnor to intelligent 360° surveillance tested at Jim Corbett
-              and deployed with forest departments across Uttarakhand and Uttar Pradesh.
+              PLIGHT is building a production-ready ecosystem for embedded intelligence—from
+              autonomous neural vision nodes and resilient telemetry to commercial automation
+              hardware deployed at scale across industrial and environmental applications.
             </p>
             <p className="type-accent-line mt-4 text-cyan-400/80">
-              Where deep-tech meets human safety at the village level.
+              Where deep-tech meets deployable hardware at commercial scale.
             </p>
           </AnimateIn>
 
@@ -40,7 +39,7 @@ export function Vision() {
 
 function VisionMap() {
   const nodes = [
-    { x: 30, y: 35, label: "Bijnor" },
+    { x: 30, y: 35, label: "HQ" },
     { x: 45, y: 50, label: "" },
     { x: 60, y: 30, label: "" },
     { x: 55, y: 65, label: "" },
@@ -49,9 +48,9 @@ function VisionMap() {
   ];
 
   return (
-    <div className="glass-card relative aspect-square max-w-md overflow-hidden rounded-2xl p-6 mx-auto lg:mx-0 lg:ml-auto">
+    <div className="glass-card relative mx-auto aspect-square max-w-md overflow-hidden rounded-2xl p-6 lg:mx-0 lg:ml-auto">
       <p className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
-        Smart Village Network — India
+        Edge Node Network — Global Scale
       </p>
       <svg viewBox="0 0 100 100" className="mt-4 h-full w-full">
         <path
@@ -80,14 +79,14 @@ function VisionMap() {
             </circle>
           </g>
         ))}
-        <text x={30} y={32} fill="#00E5FF" fontSize="4" fontWeight="bold">
-          Bijnor HQ
+        <text x={28} y={32} fill="#00E5FF" fontSize="4" fontWeight="bold">
+          Edge HQ
         </text>
       </svg>
       <div className="absolute bottom-4 left-4 right-4 flex justify-between text-[10px] text-text-cool">
-        <span>Wildlife Corridors</span>
-        <span>Safety Zones</span>
-        <span>AI Signals</span>
+        <span>Neural Vision</span>
+        <span>Telemetry Mesh</span>
+        <span>Edge Signals</span>
       </div>
     </div>
   );
